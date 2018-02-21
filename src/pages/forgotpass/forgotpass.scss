@@ -1,6 +1,6 @@
 page-forgotpass {
     .fondo{
-        background: linear-gradient(to bottom right,rgb(21, 141, 211), rgb(14, 180, 202));
+        background: linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
         display: fixed;
     }
 
@@ -10,17 +10,25 @@ page-forgotpass {
         width:30px !important;
         height:30px !important;
     }
+    .logo1{
+        font-size: 30px;
+        color: white;
+        width:30px !important;
+        height:30px !important;
+    }
+
     .card{
         margin-top:20%;
-        background: linear-gradient(to bottom right,rgb(21, 141, 211), rgb(14, 180, 202));
         border-color: white;
         border-width: 0.2px;
         border-style: solid;
+        border-radius: 2%;
     }
     .button{
         background-color: #3A8DDB;
+        color:white;
     }
     .text{
-        color: white;
+        color: rgb(31, 31, 31);
     }
 }

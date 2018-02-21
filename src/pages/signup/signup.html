@@ -6,9 +6,9 @@
 -->
 
 <ion-content class="fondo" padding>
-<ion-grid  style="height:100%" class="gridPrincipal">
+<ion-grid  style="height:100%;display: fixed;" class="gridPrincipal">
   <ion-row>
-      <ion-icon ios="ios-arrow-back" md="md-arrow-back" class="logo" (click)="volver()"></ion-icon>
+      <ion-icon ios="ios-arrow-back" md="md-arrow-back" class="logo1" (click)="volver()"></ion-icon>
   </ion-row>
 
     <ion-card class="card">
@@ -17,8 +17,10 @@
             Registro
           </ion-card-header>
         
-          <ion-card-content > 
-              <ion-grid style="height: 100%;">
+          <ion-card-content style="height:84%;padding-bottom:0%;"> 
+              <ion-row  style="height:100%">
+              <ion-col no-padding  style="height:100%">
+                  <ion-scroll scrollY="true" style="position: initial !important; height: 95%">
                   <ion-row align-items-center class="rowUser">
                       <ion-icon ios="ios-person" md="md-person" class="logo"></ion-icon>
                       <ion-input placeholder="Usuario" class="text"></ion-input>
@@ -43,12 +45,21 @@
                       <ion-icon ios="ios-phone-portrait" md="md-phone-portrait" class="logo"></ion-icon>
                       <ion-input class="text" placeholder="Teléfono" ></ion-input>
                   </ion-row>
-                  <ion-row style="margin-top:5%">
+                  <ion-row align-items-center class="rowNumber">
+                    <ion-icon ios="ios-pin" md="md-pin" class="logo"></ion-icon>
+                    <ion-input class="text" placeholder="Localidad" ></ion-input>
+                </ion-row>
+                <ion-row align-items-center class="rowNumber">
+                    <ion-icon ios="ios-pin" md="md-pin" class="logo"></ion-icon>
+                    <ion-input class="text" placeholder="Ciudad" ></ion-input>
+                </ion-row>
+                  
                       <button ion-button class="button" style="width:100%" >Registrarse</button>
+                      </ion-scroll>
+                    </ion-col>
                     </ion-row>
-                  </ion-grid>
           </ion-card-content>
-        
+       
         </ion-card>
 </ion-grid>
 

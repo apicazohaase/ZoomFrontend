@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <ion-content  class="fondo" padding>
-  <ion-grid style="height:100%" class="gridPrincipal">
+  <ion-grid style="height:100%;display: fixed" class="gridPrincipal">
     <ion-row align-items-center style="height:40%" class="row1">
       <ion-col col-4></ion-col>
       <ion-col col-4>
@@ -15,7 +15,7 @@
     </ion-row>
     
     <ion-row align-items-center style="height:60%;margin-top:10%;" class="row2">
-        <ion-grid style="height: 100%;padding:25px;">
+        
           <ion-card class="card">
             <ion-card-content>
           <ion-row align-items-center class="rowUser">
@@ -31,11 +31,11 @@
           </ion-row>
           </ion-card-content>
         </ion-card>
-          <ion-row style="margin-top:10%;padding:35px;" align-items-center>
-            <p class="text" align-items-center (click)="forgotPass()">¿Olvidaste la contraseña?</p>
-            <p class="text" align-items-center style="margin-left:4%" (click)="signUp()">Regístrate</p>
+          <ion-row style="margin-top:10%;width:100%;padding:5%;" align-items-center>
+            <p class="text1" style="width: 54%;text-align:center;"(click)="forgotPass()">¿Olvidaste la contraseña?</p>
+            <p class="text1" style="width:40%;text-align:right" (click)="signUp()">Regístrate</p>
           </ion-row>
-        </ion-grid>
+        
            
             
     </ion-row>
