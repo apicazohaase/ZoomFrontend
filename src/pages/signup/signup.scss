@@ -1,0 +1,62 @@
+page-signup {
+    .fondo{
+        background: linear-gradient(to bottom right,rgb(21, 141, 211), rgb(14, 180, 202));
+        display: fixed;
+    }
+
+    .logo{
+        font-size: 30px;
+        color: rgb(59, 59, 59);
+        width:30px !important;
+        height:30px !important;
+    }
+
+    .rowUser{
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+    }
+    .rowPassword{
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+              
+    }
+    .rowPassword2{
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+              
+    }
+    .rowMail{
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+              
+    }
+    .rowLocation{
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: white;
+              
+    }
+    .card{
+        margin-top:20%;
+        background: linear-gradient(to bottom right,rgb(21, 141, 211), rgb(14, 180, 202));
+        border-color: white;
+        border-width: 0.2px;
+        border-style: solid;
+    }
+    .cardHeader{
+        border-style: solid;
+        border-width: 2px;
+        border-color: white;
+        color:white;
+    }
+    .button{
+        background-color: #3A8DDB;
+    }
+    .text{
+        color: white;
+    }
+}

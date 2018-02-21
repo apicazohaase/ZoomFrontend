@@ -1,0 +1,19 @@
+<ion-content class="fondo" padding>
+  <ion-grid  style="height:100%" class="gridPrincipal">
+  <ion-row>
+      <ion-icon ios="ios-arrow-back" md="md-arrow-back" class="logo" (click)="volver()"></ion-icon>
+  </ion-row>
+
+    <ion-card class="card">
+      <ion-card-content>
+        <ion-row align-items-center class="rowMail">
+          <ion-icon ios="ios-mail" md="md-mail" class="logo"></ion-icon>
+          <ion-input class="text" placeholder="Correo electrónico"></ion-input>
+      </ion-row>
+      <ion-row style="margin-top:5%">
+        <button ion-button class="button" style="width:100%" class="text">Enviar correo</button>
+      </ion-row>
+      </ion-card-content>
+    </ion-card>
+   </ion-grid> 
+</ion-content>

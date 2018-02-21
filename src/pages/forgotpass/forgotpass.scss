@@ -1,0 +1,26 @@
+page-forgotpass {
+    .fondo{
+        background: linear-gradient(to bottom right,rgb(21, 141, 211), rgb(14, 180, 202));
+        display: fixed;
+    }
+
+    .logo{
+        font-size: 30px;
+        color: rgb(59, 59, 59);
+        width:30px !important;
+        height:30px !important;
+    }
+    .card{
+        margin-top:20%;
+        background: linear-gradient(to bottom right,rgb(21, 141, 211), rgb(14, 180, 202));
+        border-color: white;
+        border-width: 0.2px;
+        border-style: solid;
+    }
+    .button{
+        background-color: #3A8DDB;
+    }
+    .text{
+        color: white;
+    }
+}
