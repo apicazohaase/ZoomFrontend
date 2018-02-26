@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { ForgotpassPage } from '../forgotpass/forgotpass';
-import { PrincipalPage } from '../principal/principal';
+import { HomePage } from '../home/home';
 
 
 @IonicPage()
@@ -21,7 +21,7 @@ export class LoginPage {
 
 login(){
 
-  this.navCtrl.push(PrincipalPage);
+  this.navCtrl.setRoot(HomePage);
 }
 
 signUp(){
