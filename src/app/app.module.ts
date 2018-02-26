@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
+import { PrincipalPage } from '../pages/principal/principal';
+import { MyprofilePage } from '../pages/myprofile/myprofile';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
     HomePage,
     LoginPage,
     SignupPage,
-    ForgotpassPage
+    ForgotpassPage,
+    PrincipalPage,
+    MyprofilePage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
     HomePage,
     LoginPage,
     SignupPage,
-    ForgotpassPage
+    ForgotpassPage,
+    PrincipalPage,
+    MyprofilePage
   ],
   providers: [
     StatusBar,
