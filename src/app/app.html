@@ -1,14 +1,36 @@
 <ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+          <ion-title class="header">
+              <p style="color:white">Menu</p>
+            </ion-title>
       </ion-toolbar>
     </ion-header>
   
     <ion-content>
       <ion-list>
-        <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-          {{p.title}}
+        <button menuClose ion-item *ngFor="let p of pages" [class.activeHighlight]="checkActive(p)" (click)="openPage(p)">
+          <ion-grid *ngIf="p.title == 'Ir a mi perfil'">
+            <ion-row>
+              <ion-col col-4>
+                  <img class="userimage" src="assets/imgs/user.png">
+              </ion-col>
+              <ion-col col-8>
+                  <ion-row class="username">
+                      {{p.name}}
+                    </ion-row>
+                    <ion-row align-items-center>
+                      {{p.title}}
+                    </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-grid *ngIf="p.title != 'Ir a mi perfil'">
+              <ion-row align-items-center>
+                  {{p.title}}
+                </ion-row>
+          </ion-grid>
+
         </button>
       </ion-list>
     </ion-content>

@@ -1,16 +1,51 @@
-// http://ionicframework.com/docs/theming/
+.header{
+    background: linear-gradient(to bottom left,rgb(52, 53, 53),rgb(143, 143, 143));
+}
+
+.activeHighlight{
+    background: linear-gradient(to bottom left,rgb(106, 107, 107),rgb(236, 235, 235));
+}
+
+.item-block{
+    padding-left: 0px;
+
+    .userimage{
+        display: none;
+    }
+
+    .item-inner{
+        width: 100%;
+        padding-left: 5%;
+    }
+}
+
+.item-block:first-child{
+    height: 90px;
+
+    .userimage{
+        display: block;
+        width: 50px;
+        height: 50px;
+    }
+
+    .item-inner{
+        color: grey;
+        height: 89px;
+    }
+    .username{
+        font-size: 20px;
+        color: black;
+        font-weight: bold;
+    }
+}
 
 
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+
+
+.item-ios[detail-push] .item-inner, button.item-ios:not([detail-none]) .item-inner, a.item-ios:not([detail-none]) .item-inner{
+    background-image: none;
+}
+
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default{
+    color:white;
+}

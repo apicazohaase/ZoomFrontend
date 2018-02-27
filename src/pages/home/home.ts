@@ -12,7 +12,5 @@ export class HomePage {
 
   }
 
-  cerrar(){
-    this.navCtrl.setRoot(LoginPage);
-  }
+ 
 }

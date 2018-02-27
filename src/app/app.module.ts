@@ -10,6 +10,8 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 
 import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { MispedidosPage } from '../pages/mispedidos/mispedidos';
 
 
 
@@ -20,6 +22,8 @@ import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
     LoginPage,
     SignupPage,
     ForgotpassPage,
+    PerfilPage,
+    MispedidosPage
 
     
   ],
@@ -34,6 +38,8 @@ import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
     LoginPage,
     SignupPage,
     ForgotpassPage,
+    PerfilPage,
+    MispedidosPage
    
   ],
   providers: [
