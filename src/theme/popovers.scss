@@ -1,0 +1,42 @@
+.popover-users{
+
+    .popover-wrapper{
+        .popover-arrow{
+            display: none;
+        }
+        .popover-content{
+            top: 69px;
+            width: 42%;
+            left: none !important;
+
+            .popover-viewport{
+                .list{
+                    .item{
+                        height: 50px;
+                        padding-left: 0px;
+                        .radio{
+                            margin: 0px !important;
+
+                        }
+                        .item-inner{
+                            height: 49px;
+                            color: black;
+                            text-align: center;
+                            .radio-icon{
+                                width: 0px;
+                                height: 0px;
+                                margin: 0px !important;
+                                .radio-inner{
+                                    margin: 0px !important;
+
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}

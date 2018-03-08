@@ -12,6 +12,9 @@ import { SignupPage } from '../pages/signup/signup';
 import { ForgotpassPage } from '../pages/forgotpass/forgotpass';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { MispedidosPage } from '../pages/mispedidos/mispedidos';
+import { ApiClientService } from '../cliente';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+//import { ListenApiProvider } from '../providers/server-api/server-api':
 
 
 
@@ -29,6 +32,7 @@ import { MispedidosPage } from '../pages/mispedidos/mispedidos';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -45,6 +49,7 @@ import { MispedidosPage } from '../pages/mispedidos/mispedidos';
   providers: [
     StatusBar,
     SplashScreen,
+    ApiClientService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

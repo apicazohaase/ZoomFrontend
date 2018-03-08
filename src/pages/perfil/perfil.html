@@ -1,0 +1,69 @@
+
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title class="header">
+          <p style="color:white">Perfil</p>
+        </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+  <ion-grid class="grid">
+    <ion-row align-items-center style="height:80%">
+      <ion-col col-10>
+          <img class="userimage" src="assets/imgs/user.png">
+      </ion-col>
+        <ion-col col-2>
+            <ion-icon name="log-out" class="logout"></ion-icon>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <button ion-button class="botoneditarperfil" (click)="showSettings()">Editar perfil</button>
+    </ion-row>
+  </ion-grid>
+
+  
+        <hr style="width:84%"/>
+        <ion-card class="card" *ngIf="seeSettings==true">
+      <ion-card-content style="height:84%;padding-bottom:0%;"> 
+      
+    
+    <ion-row>
+        <ion-input placeholder="Usuario" class="text"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-input placeholder="Contraseña anterior" class="text"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-input placeholder="Nueva contraseña" class="text"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-input placeholder="Correo electrónico" class="text"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-input placeholder="Dirección" class="text"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-input placeholder="Teléfono" class="text"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-input placeholder="Localidad" class="text"></ion-input>
+    </ion-row>
+    <ion-row>
+        <ion-input placeholder="Ciudad" class="text"></ion-input>
+    </ion-row>
+    
+    </ion-card-content>
+    </ion-card>
+    <ion-row align-items-center *ngIf="seeSettings==true">
+      <ion-col style="text-align:center;">
+          <button ion-button style="width:84%" >Actualizar</button>
+      </ion-col>
+       
+    </ion-row>
+      
+
+</ion-content>
