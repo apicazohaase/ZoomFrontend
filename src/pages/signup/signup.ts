@@ -95,13 +95,13 @@ export class SignupPage {
         "participante": "CLIENT",
         "id": "1",
         "name": this.nombre,
-        "password": this.passwordE,
-        "confirmPassword": this.password2E,
-        "mail": this.mailE,
-        "number": this.telefonoE,
-        "city": this.ciudadE,
-        "localidad": this.localidadE,
-        "street": this.calleE
+        "password": this.password,
+        "confirmPassword": this.password2,
+        "mail": this.mail,
+        "number": this.telefono,
+        "city": this.ciudad,
+        "localidad": this.localidad,
+        "street": this.calle
       }
     };
     console.log("holi2");

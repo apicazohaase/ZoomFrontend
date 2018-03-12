@@ -33,7 +33,13 @@
               <ion-input  formControlName="passwordE" [(ngModel)]="password" placeholder="Contraseña" class="text" type="password"></ion-input>
           </ion-row>
           <ion-row style="margin-top:5%">
-            <button ion-button class="button" (click)="login()" style="width:100%">Iniciar Sesión</button>
+            <button ion-button class="button" (click)="tryLogin()" style="width:100%">Iniciar Sesión</button>
+            <p class="error" [style.visibility]="showme1 ? 'visible' : 'hidden'">
+              Invalid credentials
+            </p>
+            <p class="error" [style.visibility]="showme2 ? 'visible' : 'hidden'">
+                Invalid Type User
+              </p>
           </ion-row>
           </form>
           </ion-card-content>

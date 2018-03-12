@@ -37,16 +37,16 @@
                       <ion-input formControlName="calleE" [(ngModel)]="calle" placeholder="Dirección" class="text"></ion-input>
                   </ion-row>
                   <ion-row align-items-center class="rowNumber">
-                      <ion-icon ios="ios-phone-portrait" md="md-phone-portrait" class="logo"></ion-icon>
-                      <ion-input formControlName="telefonoE" [(ngModel)]="telefono" class="text" placeholder="Teléfono" ></ion-input>
-                  </ion-row>
-                  <ion-row align-items-center class="rowNumber">
                     <ion-icon ios="ios-pin" md="md-pin" class="logo"></ion-icon>
                     <ion-input formControlName="localidadE" [(ngModel)]="localidad" class="text" placeholder="Localidad" ></ion-input>
                 </ion-row>
                 <ion-row align-items-center class="rowNumber">
                     <ion-icon ios="ios-pin" md="md-pin" class="logo"></ion-icon>
                     <ion-input  formControlName="ciudadE" [(ngModel)]="ciudad" class="text" placeholder="Ciudad" ></ion-input>
+                </ion-row>
+                <ion-row align-items-center class="rowNumber">
+                        <ion-icon ios="ios-phone-portrait" md="md-phone-portrait" class="logo"></ion-icon>
+                        <ion-input formControlName="telefonoE" [(ngModel)]="telefono" class="text" placeholder="Teléfono" ></ion-input>
                 </ion-row>
                   
                       <button ion-button class="button" (click)="signUp()" style="width:100%" >Registrarse</button>

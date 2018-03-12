@@ -6,6 +6,8 @@ import { HomePage } from '../home/home';
 
 import { ApiClientService } from '../../cliente/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { VendedorPage } from '../vendedor/vendedor';
+import { TransportistaPage } from '../transportista/transportista';
 
 
 
@@ -24,6 +26,7 @@ export class LoginPage {
 
   public typeuser:string;
   public showme1: boolean;
+  public showme2:boolean;
   public error:any;
   
   
@@ -33,7 +36,10 @@ export class LoginPage {
   public user:string;
   constructor(public api:ApiClientService, public formBuilder:FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
     this.myForm = this.createMyForm();
+    this.typeuser="";
     this.showme1 = false;
+    this.showme2=false;
+    this.error=false;
   }
 
 
@@ -68,19 +74,35 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  public comprobarUser(){
-    if(this.myForm.get('user').hasError('required')){
-      this.showme1 = true;
-    }else{
-      this.showme1 = false;
-      this.login();
-    }
+  
+
+tryLogin(){
+  if(this.myForm.get("nombreE").hasError("required")){
+    this.showme1=true;
+  }else{
+    this.showme1=false;
   }
+  if(this.myForm.get("passwordE").hasError("required")){
+    this.showme1=true;
+  }else{
+    this.showme1=false;
+  }
+  if(this.typeuser==""){
+    this.showme2=true;
+  }else{
+    this.showme2=false;
+  }
+  if(this.showme1==false){
+    this.login();
+  }
+}
 
 login(){
+  
   this.saveData();
 console.log(this.nombre);
 console.log(this.password);
+console.log(this.user);
   let log = {
 
     "$class": "zoom.app.Login",
@@ -93,7 +115,14 @@ console.log(this.password);
     result => {
       console.log(result);
       this.error=false;
-      this.navCtrl.setRoot(HomePage);
+      if(this.typeuser=="Cliente"){
+        this.navCtrl.setRoot(HomePage);
+      }else if(this.typeuser=="Transportista"){
+        this.navCtrl.setRoot(TransportistaPage);
+      }else if(this.typeuser=="Vendedor"){
+        this.navCtrl.setRoot(VendedorPage);
+      }
+      
     },
     error=>{
       this.error=true;
@@ -101,9 +130,7 @@ console.log(this.password);
     }
   )
   
-  if(this.error==false){
-    this.navCtrl.setRoot(HomePage);
-  }
+  
   
 }
 

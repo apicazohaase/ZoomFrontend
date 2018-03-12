@@ -14,6 +14,8 @@ import { PerfilPage } from '../pages/perfil/perfil';
 import { MispedidosPage } from '../pages/mispedidos/mispedidos';
 import { ApiClientService } from '../cliente';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TransportistaPage } from '../pages/transportista/transportista';
+import { VendedorPage } from '../pages/vendedor/vendedor';
 //import { ListenApiProvider } from '../providers/server-api/server-api':
 
 
@@ -23,6 +25,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MyApp,
     HomePage,
     LoginPage,
+    TransportistaPage,
+    VendedorPage,
     SignupPage,
     ForgotpassPage,
     PerfilPage,
@@ -40,6 +44,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MyApp,
     HomePage,
     LoginPage,
+    TransportistaPage,
+    VendedorPage,
     SignupPage,
     ForgotpassPage,
     PerfilPage,
