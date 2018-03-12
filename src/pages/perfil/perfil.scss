@@ -13,11 +13,13 @@ page-perfil {
         background:linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
     }
 
-    .userimage{
-        display: block;
-        width: 90px;
-        height: 90px;
-        margin-left:42%;
+    .botonlogout{
+        width: 60%;
+        margin-left:20%;
+        border-radius: 30%;
+        border-style: solid;
+        border-width: 1px;
+        background-color: rgb(194, 3, 3);
     }
 
     .logout{
@@ -27,7 +29,6 @@ page-perfil {
         height: 30px !important;
     }
     .botoneditarperfil{
-        width:80%;
         background-color:rgb(228, 175, 0);
         color:rgb(32, 32, 32);
     }

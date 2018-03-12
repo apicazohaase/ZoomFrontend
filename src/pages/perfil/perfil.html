@@ -12,16 +12,25 @@
 
 <ion-content>
   <ion-grid class="grid">
-    <ion-row align-items-center style="height:80%">
-      <ion-col col-10>
+    <ion-row align-items-center style="height:80%;width:100%">
+      <ion-col col-4></ion-col>
+      <ion-col col-4>
           <img class="userimage" src="assets/imgs/user.png">
       </ion-col>
-        <ion-col col-2>
-            <ion-icon name="log-out" class="logout"></ion-icon>
+        <ion-col col-4>
+            <button ion-button class="botonlogout" (click)="logout()">
+                    <ion-icon name="log-out" class="logout"></ion-icon>
+            </button>
+            
         </ion-col>
     </ion-row>
-    <ion-row>
-        <button ion-button class="botoneditarperfil" (click)="showSettings()">Editar perfil</button>
+    <ion-row style="height:30%;width:100%">
+        <ion-col col-4></ion-col>
+        <ion-col col-4>
+                <button ion-button class="botoneditarperfil" (click)="showSettings()">Editar perfil</button>
+        </ion-col>
+        
+        <ion-col col-4></ion-col>
     </ion-row>
   </ion-grid>
 
