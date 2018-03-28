@@ -26,13 +26,35 @@ export class ApiClientService {
         return this.sendRequest<any>('post', uri, headers, params, JSON.stringify(data));
     }
 
+    public getClient(id:string): Observable<HttpResponse<any>> {
+        let uri = '/api/Client/' + id;
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        return this.sendRequest<any>('get', uri, headers, params, null);
+      }
+
+    public editProfile(id:string,data:any): Observable<HttpResponse<any>> {
+        let uri = 'api/Client' + id;
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        return this.sendRequest<any>('put', uri, headers, params, JSON.stringify(data));
+    }
+
+    public getAllProducts():Observable<HttpResponse<any>> {
+        let uri = 'api/Product';
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        return this.sendRequest<any>('get',uri,headers,params,null);
+    }
+
     private sendRequest<T>(method: string, uri:string, headers: HttpHeaders, params: HttpParams, body:any): Observable<HttpResponse<T>> {
         if (method === 'post'){
             return this.http.post<T>(this.domain + uri, body, {headers: headers.set('Content-Type', 'application/json'), params: params, observe: 'response'});
         } else if(method === 'get'){
             return this.http.get<T>(this.domain + uri, {headers: headers.set('Accept', 'application/json'), params: params, observe: 'response'});
+        } else if (method === 'put') {
+            return this.http.put<T>(this.domain + uri, body, { headers: headers.set('Content-Type', 'application/json'), params: params, observe: 'response' });
         }
-
         if(method === 'get'){
             return this.http.get<T>(this.domain + uri, {headers: headers.set('Accept', '*/*'), params: params, observe: 'response'});
 

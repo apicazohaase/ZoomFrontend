@@ -9,8 +9,120 @@
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
-    <h3>8==D~</h3>
+  <ion-content padding style="background-color:#E9E9E9">
+   <!--> <ion-scroll scrollY="true" style="height:100%;width:100%;position:initial !important"> <!-->
+        <ion-grid class="gridOferta">
+          <ion-row style="height:10%">
+            <ion-col col-4>
+              <p class="text">Oferta del día</p>
+            </ion-col>
+            <ion-col col-8></ion-col>
+          </ion-row>
+          <ion-row style="height:45%">
+            <img src="assets/imgs/asus1.jpg" style="width:66%;margin-left:14%">
+          </ion-row>
+          <ion-row style="height:28%">
+            <p style="width:100%;padding:0%;margin-left:4%">ASUS Monitor de 27''</p>
+            <p style="width:20%;margin-left:4%">{{this.precioProductoOferta}}</p>
+            <p style="width:50%">Precio recomendado 350€</p>
+            <p style="width:100%;margin-left:4%" id="dateRemaining"></p>
+            <!-->
+            <script>
+                // Set the date we're counting down to
+                var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+                
+                // Update the count down every 1 second
+                var x = setInterval(function() {
+                
+                    // Get todays date and time
+                    var now = new Date().getTime();
+                    
+                    // Find the distance between now an the count down date
+                    var distance = countDownDate - now;
+                    
+                    // Time calculations for days, hours, minutes and seconds
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                    // Output the result in an element with id="demo"
+                    document.getElementById("dateRemaining").innerHTML = days + "d " + hours + "h "
+                    + minutes + "m " + seconds + "s ";
+                    
+                    // If the count down is over, write some text 
+                    if (distance < 0) {
+                        clearInterval(x)
+                        document.getElementById("dateRemaining").innerHTML = "EXPIRED";
+                    }
+                }, 1000);
+                </script><!-->
+          </ion-row>
+          <ion-row style="height:15%" >
+            <hr class="hr">
+            <ion-row style="height:90%">
+              <ion-col col-11>
+                  <p style="color:blue;margin-left:4%">Comprar oferta</p>
+              </ion-col>
+              <ion-col col-1 style="align-self:center">
+                <img src="assets/imgs/arrow.png" style="color:blue;width:100%;height:100%;">
+              </ion-col>
+            </ion-row>
+         
+          </ion-row>
+        </ion-grid>
+          <ion-grid class="grid">
+              <ion-row style="height:15%">
+                <p style="margin-left:4%;margin-bottom:1%">Recomendaciones para ti</p>
+                <hr class="hr">
+               </ion-row>
+               <ion-row style="height:42.5%;width:100%" (click)="mouse()">
+                 <ion-col col-3 style="align-self:center">
+                    <img src="assets/imgs/gpro.png">
+                 </ion-col>
+                 <ion-col col-8>
+                   <ion-row style="height:25%"></ion-row>
+                  <ion-row style="height:25%">
+                    <p>Nombre</p>
+                  </ion-row>
+                  <ion-row style="height:25%">
+                    <p class="precio">Precio</p>
+                  </ion-row>
+                  <ion-row style="height:25%"></ion-row>
+                 </ion-col>
+                 <ion-col col-1 style="align-self:center">
+                    <img src="assets/imgs/arrow.png">
+                 </ion-col>
+               </ion-row>
+               <ion-row style="height:42.2%;width:100%" (click)="keyboard()">
+                 <ion-col col-3 style="align-self:center">
+                    <img src="assets/imgs/keyboard.png">
+                 </ion-col>
+                 <ion-col col-8>
+                    <ion-row style="height:25%"></ion-row>
+                    <ion-row style="height:25%">
+                        <p>Nombre</p>
+                      </ion-row>
+                      <ion-row style="height:25%">
+                        <p class="precio">Precio</p>
+                      </ion-row>
+                      <ion-row style="height:25%"></ion-row>
+                 </ion-col>
+                <ion-col col-1 style="align-self:center">
+                  <img src="assets/imgs/arrow.png">
+                </ion-col>
+               </ion-row>
+  
+             
+          </ion-grid>
+          
+          <ion-grid class="grid">
+
+          </ion-grid>
+          
+
+    <!--> </ion-scroll> <!-->
+
 
 
   </ion-content>

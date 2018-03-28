@@ -36,40 +36,35 @@
 
   
         <hr style="width:84%"/>
-        <ion-card class="card" *ngIf="seeSettings==true">
+        <ion-card class="card" >
       <ion-card-content style="height:84%;padding-bottom:0%;"> 
       
-    
+    <!--><form style="width:100%;height:100%"> <!-->
+
     <ion-row>
-        <ion-input placeholder="Usuario" class="text"></ion-input>
+        <ion-input [(ngModel)]="usuario" [readonly]="!canWrite" class="text"></ion-input>
     </ion-row>
     <ion-row>
-        <ion-input placeholder="Contraseña anterior" class="text"></ion-input>
+        <ion-input  [(ngModel)]="correo" class="text" [readonly]="!canWrite"></ion-input>
     </ion-row>
     <ion-row>
-        <ion-input placeholder="Nueva contraseña" class="text"></ion-input>
+        <ion-input  [(ngModel)]="direccion" class="text" [readonly]="!canWrite"></ion-input>
     </ion-row>
     <ion-row>
-        <ion-input placeholder="Correo electrónico" class="text"></ion-input>
+        <ion-input  [(ngModel)]="localidad" class="text" [readonly]="!canWrite"></ion-input>
     </ion-row>
     <ion-row>
-        <ion-input placeholder="Dirección" class="text"></ion-input>
+        <ion-input [(ngModel)]="ciudad"class="text" [readonly]="!canWrite"></ion-input>
     </ion-row>
     <ion-row>
-        <ion-input placeholder="Teléfono" class="text"></ion-input>
-    </ion-row>
-    <ion-row>
-        <ion-input placeholder="Localidad" class="text"></ion-input>
-    </ion-row>
-    <ion-row>
-        <ion-input placeholder="Ciudad" class="text"></ion-input>
-    </ion-row>
-    
+            <ion-input [(ngModel)]="telefono" class="text" [readonly]="!canWrite"></ion-input>
+        </ion-row>
+    <!--> </form> <!-->
     </ion-card-content>
     </ion-card>
     <ion-row align-items-center *ngIf="seeSettings==true">
       <ion-col style="text-align:center;">
-          <button ion-button style="width:84%" >Actualizar</button>
+          <button ion-button style="width:84%" (click)=actualizarInfo() >Actualizar</button>
       </ion-col>
        
     </ion-row>

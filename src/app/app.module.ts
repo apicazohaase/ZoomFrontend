@@ -16,6 +16,17 @@ import { ApiClientService } from '../cliente';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TransportistaPage } from '../pages/transportista/transportista';
 import { VendedorPage } from '../pages/vendedor/vendedor';
+import { ForgotpassPageModule } from '../pages/forgotpass/forgotpass.module';
+import { SignupPageModule } from '../pages/signup/signup.module';
+import { TransportistaPageModule } from '../pages/transportista/transportista.module';
+import { VendedorPageModule } from '../pages/vendedor/vendedor.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { MispedidosPageModule } from '../pages/mispedidos/mispedidos.module';
+import { KeyboardPage } from '../pages/keyboard/keyboard';
+import { MousePage } from '../pages/mouse/mouse';
+import { MousePageModule } from '../pages/mouse/mouse.module';
+import { KeyboardPageModule } from '../pages/keyboard/keyboard.module';
 //import { ListenApiProvider } from '../providers/server-api/server-api':
 
 
@@ -23,19 +34,21 @@ import { VendedorPage } from '../pages/vendedor/vendedor';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    LoginPage,
-    TransportistaPage,
-    VendedorPage,
-    SignupPage,
-    ForgotpassPage,
-    PerfilPage,
-    MispedidosPage
+    HomePage
 
     
   ],
   imports: [
     BrowserModule,
+    ForgotpassPageModule,
+    SignupPageModule,
+    TransportistaPageModule,
+    VendedorPageModule,
+    LoginPageModule,
+    PerfilPageModule,
+    MousePageModule,
+    KeyboardPageModule,
+    MispedidosPageModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -44,6 +57,8 @@ import { VendedorPage } from '../pages/vendedor/vendedor';
     MyApp,
     HomePage,
     LoginPage,
+    MousePage,
+    KeyboardPage,
     TransportistaPage,
     VendedorPage,
     SignupPage,

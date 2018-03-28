@@ -2,4 +2,38 @@ page-home {
     .header{
         background: linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
     }
+    .gridOferta{
+        background-color:white;
+        min-width: 100%;
+        min-height: 64%;
+        border-radius:5px;
+        padding:0%;
+    }
+    .text{
+        margin-left:4%;
+        font-weight:bold;
+        padding: 0%;
+    }
+    .hr{
+        color: #E9E9E9;
+        width: 94%;
+        height: 0%;
+        border-style: solid;
+        border-width: 0.5px;
+    }
+    .buttonOferta{
+        background-color:white;
+        width:100%;
+    }
+    .grid{
+        background-color:white;
+        margin-top:4%;
+        width: 100%;
+        height: 40%;
+        border-radius:5px;
+        padding:0%;
+    }
+    .precio{
+        color:rgb(156, 156, 156);
+    }
 }
