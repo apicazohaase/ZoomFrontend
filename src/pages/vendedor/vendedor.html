@@ -1,9 +1,4 @@
-<!--
-  Generated template for the VendedorPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
     <ion-toolbar>
         <ion-title class="header">
@@ -14,5 +9,51 @@
 
 
 <ion-content padding>
+<ion-row>
+  <ion-col col-9>
+      <p>Bienvenido</p>
+  </ion-col>
+  <ion-col col-3>
+      <button ion-button class="botonlogout" (click)="logout()">
+          <ion-icon name="log-out" class="logout"></ion-icon>
+  </button>
+  </ion-col>
+</ion-row>
+<hr class="hr">
+<ion-grid class="grid">
+  <ion-row style="width:100%;height:10%">
+      <p style="margin-left:4%;margin-bottom:1%">Pedidos</p>
+      <hr class="hr">
+</ion-row>
+<ion-row style="width:100%;height:90%">
+<ion-row *ngFor="let pedido of pedidosList; let i = index" style="width:100%">
+  <ion-col col-6>
+    <ion-row style="width:100%;height:20%"></ion-row>
+  <ion-row style="width:100%;height:20%">
+    <p style="font-weight:bold">{{pedido.product}}</p>
+    
+  </ion-row>
+  <ion-row style="width:100%;height:20%">
+  <p>Nombre comprador</p>
+  </ion-row>
+  <ion-row style="width:100%;height:20%">
+      <p style="color:blue">{{pedido.status}}</p>
+      </ion-row>
+  <ion-row style="width:100%;height:20%"></ion-row>
+</ion-col>
+<ion-col col-6 style="align-self:center">
+  <ion-row>
+      <button ion-button (click)="confirmarPedido(pedido)">Confirmar pedido</button>
+  </ion-row>
+  
+</ion-col>
+</ion-row>
+<hr class="hr2">
+</ion-row>
+</ion-grid>
 
+<!-->Grid de edicion<!-->
+  <ion-grid *ngIf="visible" class="gridEdicion">
+    <p style="width:100%">{{this.mensaje}}</p>
+  </ion-grid>
 </ion-content>

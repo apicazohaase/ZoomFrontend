@@ -27,6 +27,8 @@ import { KeyboardPage } from '../pages/keyboard/keyboard';
 import { MousePage } from '../pages/mouse/mouse';
 import { MousePageModule } from '../pages/mouse/mouse.module';
 import { KeyboardPageModule } from '../pages/keyboard/keyboard.module';
+import { AuricularesPage } from '../pages/auriculares/auriculares';
+import { AuricularesPageModule } from '../pages/auriculares/auriculares.module';
 //import { ListenApiProvider } from '../providers/server-api/server-api':
 
 
@@ -49,6 +51,7 @@ import { KeyboardPageModule } from '../pages/keyboard/keyboard.module';
     MousePageModule,
     KeyboardPageModule,
     MispedidosPageModule,
+    AuricularesPageModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -61,6 +64,7 @@ import { KeyboardPageModule } from '../pages/keyboard/keyboard.module';
     KeyboardPage,
     TransportistaPage,
     VendedorPage,
+    AuricularesPage,
     SignupPage,
     ForgotpassPage,
     PerfilPage,

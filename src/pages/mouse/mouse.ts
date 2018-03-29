@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
+import { ApiClientService } from '../../cliente';
+import { AnonymousSubject } from 'rxjs/Subject';
 
-/**
- * Generated class for the MousePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,10 +10,91 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'mouse.html',
 })
 export class MousePage {
+  public enStock:boolean;
+  public id:string;
+  public peso:any;
+  public precio:any;
+  public nombre:any;
+  public descripcion:any;
+  public status:any;
+  public direccion:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alertCtrl:AlertController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
+    this.id='1';
+    this.api.getAProduct(this.id).subscribe(
+      result => {
+        this.peso = result.body.weight + '' + 'kg';
+        this.precio = result.body.price + '' + '€';
+        this.descripcion = result.body.description;
+        this.nombre = result.body.name;
+        this.status = result.body.status;
+        if(this.status == "NOTSOLD"){
+          this.enStock=true;
+        }else{
+          this.enStock=false;
+        }
+
+          
+      },
+      error => {
+      console.log(error);
+    });
+
+    this.api.getClient(this.id).subscribe(
+      result=>{
+        console.log('Cliente ' + result.body);
+        this.direccion = 'Enviar a ' + '' + result.body.street;
+      },
+      error => {
+        console.log(error);
+      });
+
   }
 
+  comprarProducto(){
+    this.presentAlert();
+  }
+
+  comprar(){
+    let compra = {
+      
+        "$class": "zoom.app.BuyAProduct",
+        "client": "resource:zoom.app.Client#" + this.id,
+        "transport": "resource:zoom.app.Transport#1",
+        "vendor": "resource:zoom.app.Vendor#1",
+        "product": "resource:zoom.app.Product#" + this.id
+      };
+      this.api.compraDeProducto(compra).subscribe(
+        result=>{
+          this.events.publish('orderCreated');
+          console.log("Success");
+        },
+        error=>{
+          console.log(error)
+        });
+    
+
+  }
+
+  presentAlert(){
+    const alert = this.alertCtrl.create({
+      title: "¿Está seguro que quiere comprar el producto?",
+      buttons: [
+        {
+          text: "SI",
+          role: "OK",
+          handler: () => {
+            this.comprar();
+          }
+        },
+        {
+          text: "NO",
+          role: "CANCEL"
+        }
+      ]
+    });
+    alert.present();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MousePage');
   }

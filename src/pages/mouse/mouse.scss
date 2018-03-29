@@ -1,3 +1,44 @@
 page-mouse {
-
+    .header{
+        background: linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
+    }
+    .button{
+        width:60%;
+    }
+    .enStock{
+        color:green;
+        margin: 0%;
+    }
+    .fueraStock{
+        color:red;
+        margin: 0%;
+    }
+    .colStock{
+        border-radius: 2%;
+        border-color: #E9E9E9;
+        border-width: 1px;
+        border-style: solid; 
+    }
+    .rowImg{
+        width:100%;
+        height:35%;
+        border-radius: 2%;
+        border-color: #E9E9E9;
+        border-width: 1px;
+        border-style: solid;
+        align-items: center;
+    }
+    .span.back-button-text.back-button-text-ios{
+        opacity: 0;
+    }
+    .back-button disable-hover bar-button bar-button-ios back-button-ios bar-button-default bar-button-default-ios show-back-button{
+        .back-button-text back-button-text-ios{
+            opacity: 0;
+        }
+    }
+    .back-button-text-ios {
+        opacity:0;
+    }
+    
 }
+

@@ -11,7 +11,7 @@
   
   <ion-content padding style="background-color:#E9E9E9">
    <!--> <ion-scroll scrollY="true" style="height:100%;width:100%;position:initial !important"> <!-->
-        <ion-grid class="gridOferta">
+        <ion-grid class="gridOferta" *ngIf="visible3">
           <ion-row style="height:10%">
             <ion-col col-4>
               <p class="text">Oferta del día</p>
@@ -22,8 +22,8 @@
             <img src="assets/imgs/asus1.jpg" style="width:66%;margin-left:14%">
           </ion-row>
           <ion-row style="height:28%">
-            <p style="width:100%;padding:0%;margin-left:4%">ASUS Monitor de 27''</p>
-            <p style="width:20%;margin-left:4%">{{this.precioProductoOferta}}</p>
+            <p style="width:100%;padding:0%;margin-left:4%">{{this.name3}}</p>
+            <p style="width:20%;margin-left:4%;color:rgb(156, 156, 156);">{{this.price3}}</p>
             <p style="width:50%">Precio recomendado 350€</p>
             <p style="width:100%;margin-left:4%" id="dateRemaining"></p>
             <!-->
@@ -76,17 +76,17 @@
                 <p style="margin-left:4%;margin-bottom:1%">Recomendaciones para ti</p>
                 <hr class="hr">
                </ion-row>
-               <ion-row style="height:42.5%;width:100%" (click)="mouse()">
+               <ion-row style="height:42.5%;width:100%" (click)="mouse()" *ngIf="visible1">
                  <ion-col col-3 style="align-self:center">
                     <img src="assets/imgs/gpro.png">
                  </ion-col>
                  <ion-col col-8>
                    <ion-row style="height:25%"></ion-row>
                   <ion-row style="height:25%">
-                    <p>Nombre</p>
+                    <p>{{this.name1}}</p>
                   </ion-row>
                   <ion-row style="height:25%">
-                    <p class="precio">Precio</p>
+                    <p class="precio">{{this.price1}}</p>
                   </ion-row>
                   <ion-row style="height:25%"></ion-row>
                  </ion-col>
@@ -94,17 +94,17 @@
                     <img src="assets/imgs/arrow.png">
                  </ion-col>
                </ion-row>
-               <ion-row style="height:42.2%;width:100%" (click)="keyboard()">
+               <ion-row style="height:42.2%;width:100%" (click)="keyboard()" *ngIf="visible2">
                  <ion-col col-3 style="align-self:center">
                     <img src="assets/imgs/keyboard.png">
                  </ion-col>
                  <ion-col col-8>
                     <ion-row style="height:25%"></ion-row>
                     <ion-row style="height:25%">
-                        <p>Nombre</p>
+                        <p>{{this.name2}}</p>
                       </ion-row>
                       <ion-row style="height:25%">
-                        <p class="precio">Precio</p>
+                        <p class="precio">{{this.price2}}</p>
                       </ion-row>
                       <ion-row style="height:25%"></ion-row>
                  </ion-col>
@@ -116,8 +116,31 @@
              
           </ion-grid>
           
-          <ion-grid class="grid">
-
+          <ion-grid class="grid" *ngIf="visible4">
+              <ion-row style="height:15%">
+                <p style="margin-left:4%;margin-bottom:1%">Populares</p>
+                <hr class="hr">
+               </ion-row>
+               <ion-row style="height:85%;width:100%" (click)="auriculares()">
+                
+               
+                 <ion-col col-5 style="align-self:center">
+                    <img src="assets/imgs/auriculares.png">
+                 </ion-col>
+                 <ion-col col-6>
+                    <ion-row style="height:33%"></ion-row>
+                    <ion-row style="height:33%">
+                        <p style="width:100%;margin:0%">{{this.name4}}</p>
+                        <p style="width:100%;margin:0%" class="precio">{{this.price4}}</p>
+                      </ion-row>
+                   <ion-row style="height:33%"></ion-row>
+                 </ion-col>
+                <ion-col col-1 style="align-self:center">
+                  <img src="assets/imgs/arrow.png">
+                </ion-col>
+              </ion-row>
+  
+             
           </ion-grid>
           
 

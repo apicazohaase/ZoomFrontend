@@ -6,6 +6,7 @@ import { LoginPage } from '../pages/login/login'
 import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { MispedidosPage } from '../pages/mispedidos/mispedidos';
+import { VendedorPage } from '../pages/vendedor/vendedor';
 
 
 @Component({
@@ -14,14 +15,13 @@ import { MispedidosPage } from '../pages/mispedidos/mispedidos';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = VendedorPage;
   activePage:any;
 
   pages: Array<{name: string, title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
       { name: 'Alvaro', title: 'Ir a mi perfil', component: PerfilPage },
