@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { PerfilPage } from '../pages/perfil/perfil';
 import { MispedidosPage } from '../pages/mispedidos/mispedidos';
 import { VendedorPage } from '../pages/vendedor/vendedor';
+import { TransportistaPage } from '../pages/transportista/transportista';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { VendedorPage } from '../pages/vendedor/vendedor';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MispedidosPage;
+  rootPage: any = LoginPage;
   activePage:any;
 
   pages: Array<{name: string, title: string, component: any}>;

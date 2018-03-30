@@ -69,6 +69,13 @@ export class ApiClientService {
         return this.sendRequest<any>('put', uri, headers, params, JSON.stringify(data));
     }
 
+    public changeStatus(id:string,data:any): Observable<HttpResponse<any>> {
+        let uri = '/api/Client/' + id;
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        return this.sendRequest<any>('put', uri, headers, params, JSON.stringify(data));
+    }
+
     public getAProduct(id:string): Observable<HttpResponse<any>> {
         let uri = '/api/Product/' + id;
         let headers = new HttpHeaders();

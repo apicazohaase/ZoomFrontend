@@ -1,9 +1,3 @@
-<!--
-  Generated template for the TransportistaPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
     <ion-toolbar>
         <ion-title class="header">
@@ -13,5 +7,34 @@
   </ion-header>
 
 <ion-content padding>
+
+    <ion-grid class="grid" *ngFor="let pedido of pedidosAEntregar; let i = index" style="width:100%">
+        <ion-row>
+            
+       <ion-col col-4>
+            <ion-row style="width:100%;height:33%">
+              <p style="font-weight:bold">{{pedido.product}}</p>
+              
+            </ion-row>
+            <ion-row style="width:100%;height:34%">
+            <p>Nombre vendedor</p>
+            </ion-row>
+            <ion-row style="width:100%;height:33%">
+                <p style="color:blue">{{pedido.status}}</p>
+            </ion-row>
+          </ion-col>
+          <ion-col col-6 style="align-self:center;text-align:center">
+            <img src="assets/imgs/asus1.jpg" *ngIf="pedido.product == 'ASUS MX239H'" style="width:50%;height:50%">
+            <img src="assets/imgs/auriculares.png" *ngIf="pedido.product == 'Logitech G430'" style="width:50%;height:50%">
+            <img src="assets/imgs/gpro.png" *ngIf="pedido.product == 'Logitech G Pro'" style="width:50%;height:50%">
+            <img src="assets/imgs/keyboard.png" *ngIf="pedido.product == 'Logitech G213'" style="width:50%;height:50%">
+          </ion-col>
+          <ion-col col-2 style="align-self:center;text-align:center">
+              <ion-icon ios="ios-camera" md="md-camera" (click)="click(pedido)"></ion-icon>
+          </ion-col>
+         
+          </ion-row>
+          
+    </ion-grid>
 
 </ion-content>

@@ -11,7 +11,7 @@
   
   <ion-content padding style="background-color:#E9E9E9">
    <!--> <ion-scroll scrollY="true" style="height:100%;width:100%;position:initial !important"> <!-->
-        <ion-grid class="gridOferta" *ngIf="visible3">
+        <ion-grid class="gridOferta">
           <ion-row style="height:10%">
             <ion-col col-4>
               <p class="text">Oferta del día</p>
@@ -76,7 +76,7 @@
                 <p style="margin-left:4%;margin-bottom:1%">Recomendaciones para ti</p>
                 <hr class="hr">
                </ion-row>
-               <ion-row style="height:42.5%;width:100%" (click)="mouse()" *ngIf="visible1">
+               <ion-row style="height:42.5%;width:100%" (click)="mouse()" >
                  <ion-col col-3 style="align-self:center">
                     <img src="assets/imgs/gpro.png">
                  </ion-col>
@@ -94,7 +94,7 @@
                     <img src="assets/imgs/arrow.png">
                  </ion-col>
                </ion-row>
-               <ion-row style="height:42.2%;width:100%" (click)="keyboard()" *ngIf="visible2">
+               <ion-row style="height:42.2%;width:100%" (click)="keyboard()">
                  <ion-col col-3 style="align-self:center">
                     <img src="assets/imgs/keyboard.png">
                  </ion-col>
@@ -116,7 +116,7 @@
              
           </ion-grid>
           
-          <ion-grid class="grid" *ngIf="visible4">
+          <ion-grid class="grid">
               <ion-row style="height:15%">
                 <p style="margin-left:4%;margin-bottom:1%">Populares</p>
                 <hr class="hr">

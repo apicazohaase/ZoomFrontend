@@ -30,6 +30,7 @@ import { KeyboardPageModule } from '../pages/keyboard/keyboard.module';
 import { AuricularesPage } from '../pages/auriculares/auriculares';
 import { AuricularesPageModule } from '../pages/auriculares/auriculares.module';
 //import { ListenApiProvider } from '../providers/server-api/server-api':
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 
 
@@ -75,6 +76,7 @@ import { AuricularesPageModule } from '../pages/auriculares/auriculares.module';
     StatusBar,
     SplashScreen,
     ApiClientService,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
