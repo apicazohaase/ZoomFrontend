@@ -15,7 +15,7 @@ import { VendedorPage } from '../pages/vendedor/vendedor';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = VendedorPage;
+  rootPage: any = MispedidosPage;
   activePage:any;
 
   pages: Array<{name: string, title: string, component: any}>;

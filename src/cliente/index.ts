@@ -26,6 +26,14 @@ export class ApiClientService {
         return this.sendRequest<any>('post', uri, headers, params, JSON.stringify(data));
     }
 
+    public getOrdersOfAClient(id:string): Observable<HttpResponse<any>> {
+        let uri = '/api/Order?filter=%7B%22client%22%3A%20%22resource%3Azoom.app.Client%23' + id +'%22%7D';
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        return this.sendRequest<any>('get', uri, headers, params, null);
+
+    }
+
     public getAllOrders():Observable<HttpResponse<any>> {
         let uri = '/api/Order';
         let headers = new HttpHeaders();

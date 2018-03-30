@@ -66,7 +66,7 @@ export class MousePage {
       };
       this.api.compraDeProducto(compra).subscribe(
         result=>{
-          this.events.publish('orderCreated');
+          this.events.publish('ordersMade');
           console.log("Success");
         },
         error=>{
