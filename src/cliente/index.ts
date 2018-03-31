@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ApiClientService {
-    private domain = 'http://173.193.79.109:31090';
+    private domain = 'http://173.193.92.58:31090';
 
     constructor(private http: HttpClient, @Optional() @Inject('domain') domain: string){
         if(domain){
@@ -69,11 +69,18 @@ export class ApiClientService {
         return this.sendRequest<any>('put', uri, headers, params, JSON.stringify(data));
     }
 
-    public changeStatus(id:string,data:any): Observable<HttpResponse<any>> {
-        let uri = '/api/Client/' + id;
+    public changeStatusToDelivered(data:any): Observable<HttpResponse<any>> {
+        let uri = '/api/ChangeStatusToDelivered';
         let headers = new HttpHeaders();
         let params = new HttpParams();
-        return this.sendRequest<any>('put', uri, headers, params, JSON.stringify(data));
+        return this.sendRequest<any>('post', uri, headers, params, JSON.stringify(data));
+    }
+
+    public changeStatusToInTransit(data:any): Observable<HttpResponse<any>> {
+        let uri = '/api/ChangeStatusToInTransit';
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        return this.sendRequest<any>('post', uri, headers, params, JSON.stringify(data));
     }
 
     public getAProduct(id:string): Observable<HttpResponse<any>> {

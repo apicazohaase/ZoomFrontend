@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiClientService } from '../../cliente';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
 
 
 @IonicPage()
@@ -14,7 +15,7 @@ export class TransportistaPage {
   id:any
   public pedidosAEntregar = new Array();
 
-  constructor(private barCodeScanner: BarcodeScanner, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private barCodeScanner: BarcodeScanner, private toast:Toast, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
     this.pedidosAEntregar = [];
     this.api.getAllOrders().subscribe(
       result=>{
@@ -52,16 +53,30 @@ export class TransportistaPage {
     this.barCodeScanner.scan().then((barcodeData)=>{
       this.receiveData = barcodeData.text;
 
-      this.api.changeStatus(this.id,this.receiveData).subscribe(
+      if(pedido.status == 'CONFIRMED'){
+        this.api.changeStatusToInTransit(this.receiveData).subscribe(
+          result=>{
+            console.log(result);
+          },
+          error=>{
+            console.log(error);
+          });
+      }
+      if(pedido.status == 'INTRANSIT'){
+      this.api.changeStatusToDelivered(this.receiveData).subscribe(
         result=>{
           console.log(result);
         },
         error=>{
           console.log(error);
-        }
-      )
-    })
+        });
+      }
+    }, (err)=>{
+      this.toast.show(`Product not found`, '5000', 'center').subscribe(
+        toast => {
+          console.log(toast);
+        });
+  });
 
-  }
-
+}
 }

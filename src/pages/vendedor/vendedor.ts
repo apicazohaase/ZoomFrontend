@@ -19,9 +19,9 @@ export class VendedorPage {
     this.pedidosList = [];
     this.visible=false;
     console.log("holi");
-
+/*
   this.events.subscribe('ordersMade',
-  (orderCreated)=>{
+  (orderCreated)=>{*/
     this.api.getAllOrders().subscribe(
       result=>{
         console.log("Hola");
@@ -38,12 +38,13 @@ export class VendedorPage {
           }else if(result.body[i].product == "resource:zoom.app.Product#4"){
             this.pedidosList[i].product = 'Logitech G430';
           }
+          
         }
         console.log(this.pedidosList[0].product);
 }, error=>{
         console.log(error);
       });
-  });
+  /*});*/
 }
 
   ionViewDidLoad() {

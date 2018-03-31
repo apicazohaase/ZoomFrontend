@@ -8,20 +8,51 @@
 
 <ion-content padding>
 
-    <ion-grid class="grid" *ngFor="let pedido of pedidosAEntregar; let i = index" style="width:100%">
+    <ion-row>
+        <ion-col col-9>
+            <p>Bienvenido</p>
+        </ion-col>
+        <ion-col col-3>
+            <button ion-button class="botonlogout" (click)="logout()">
+                <ion-icon name="log-out" class="logout"></ion-icon>
+        </button>
+        </ion-col>
+      </ion-row>
+      <hr class="hr">
+        <ion-row style="width:100%;height:10%">
+          <ion-row style="height:60%;width:100%">
+              <p style="margin-left:4%;margin-bottom:1%">Pedidos</p>
+          </ion-row>
+          <ion-row style="height:40%;width:100%">
+              <hr class="hr2">
+          </ion-row>
+            
+      </ion-row>
+     
+
+
+
+
+<ng-container *ngFor="let pedido of pedidosAEntregar; let i = index">
+    <ion-grid class="grid"  *ngIf="pedido.status=='CONFIRMED'" style="width:100%;margin-top:2%">
+      <!--><ion-grid *ngIf="pedido.status=='CONFIRMED'" style="width:100%;height:100%"><!-->
         <ion-row>
             
        <ion-col col-4>
-            <ion-row style="width:100%;height:33%">
+            <ion-row style="width:100%;height:25%">
               <p style="font-weight:bold">{{pedido.product}}</p>
               
             </ion-row>
-            <ion-row style="width:100%;height:34%">
+            <ion-row style="width:100%;height:25%">
             <p>Nombre vendedor</p>
             </ion-row>
-            <ion-row style="width:100%;height:33%">
+            <ion-row style="width:100%;height:25%">
+              <p style="font-weight:400">ID: {{pedido.id}}</p>
+            </ion-row>
+            <ion-row style="width:100%;height:25%">
                 <p style="color:blue">{{pedido.status}}</p>
             </ion-row>
+
           </ion-col>
           <ion-col col-6 style="align-self:center;text-align:center">
             <img src="assets/imgs/asus1.jpg" *ngIf="pedido.product == 'ASUS MX239H'" style="width:50%;height:50%">
@@ -34,7 +65,8 @@
           </ion-col>
          
           </ion-row>
-          
-    </ion-grid>
+        </ion-grid>
+      </ng-container>
+   <!--> </ion-grid> <!-->
 
 </ion-content>

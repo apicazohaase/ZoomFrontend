@@ -31,6 +31,7 @@ import { AuricularesPage } from '../pages/auriculares/auriculares';
 import { AuricularesPageModule } from '../pages/auriculares/auriculares.module';
 //import { ListenApiProvider } from '../providers/server-api/server-api':
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Toast } from '@ionic-native/toast';
 
 
 
@@ -77,6 +78,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     SplashScreen,
     ApiClientService,
     BarcodeScanner,
+    Toast,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

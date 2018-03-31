@@ -16,7 +16,7 @@ import { TransportistaPage } from '../pages/transportista/transportista';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = TransportistaPage;
   activePage:any;
 
   pages: Array<{name: string, title: string, component: any}>;
