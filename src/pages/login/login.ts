@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { ForgotpassPage } from '../forgotpass/forgotpass';
 import { HomePage } from '../home/home';
-
+import { Nav } from 'ionic-angular';
 import { ApiClientService } from '../../cliente/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VendedorPage } from '../vendedor/vendedor';
 import { TransportistaPage } from '../transportista/transportista';
+import { EmptyPage } from '../empty/empty';
+
 
 
 
@@ -20,26 +22,27 @@ export class LoginPage {
   public myForm: FormGroup;
   public nombre:any;
   public password:any;
-
+  rootPage:any = 'EmptyPage';
   public nombreE:any;
   public passwordE:any;
-
+  public id:any;
   public typeuser:string;
   public showme1: boolean;
   public showme2:boolean;
   public error:any;
-  
+  @ViewChild (Nav) nav: Nav;
   
   public vendor:string="resource:zoom.app.Vendor#1";
-  public client:string="resource:zoom.app.Client#1";
+  public client:string="resource:zoom.app.Client#";
   public transport:string="resource:zoom.app.Transport#1";
   public user:string;
-  constructor(public api:ApiClientService, public formBuilder:FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events:Events, public api:ApiClientService, public formBuilder:FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
     this.myForm = this.createMyForm();
     this.typeuser="";
     this.showme1 = false;
     this.showme2=false;
     this.error=false;
+    this.events.publish("ordersInfo");
   }
 
 
@@ -56,18 +59,38 @@ export class LoginPage {
 
   saveData(){
     this.nombre=this.myForm.value.nombreE;
+    String(this.nombre);
     this.password=this.myForm.value.passwordE;
+
+    this.api.getAllClients().subscribe(
+      result=>{
+        for(var i=0;i<result.body.length;i++){
+          if(result.body[i].name==this.nombre){
+            this.id = result.body[i].id;
+            //this.user = this.client + this.id;
+          }
+          //this.user = this.client + this.id;
+          
+        }
+      },
+      error=>{
+        console.log(error);
+      });
   }
 
 
   onSelectChange(selectedValue:any){
     if(this.typeuser=="Vendedor"){
       this.user = this.vendor;
+      this.events.publish('ordersInfo');
     }else if(this.typeuser=="Cliente"){
       this.user = this.client;
+      this.events.publish('ordersInfo');
     }else if(this.typeuser=="Transportista"){
       this.user = this.transport;
+      this.events.publish('ordersInfo');
     }
+    
   }
 
   ionViewDidLoad() {
@@ -77,6 +100,7 @@ export class LoginPage {
   
 
 tryLogin(){
+  
   if(this.myForm.get("nombreE").hasError("required")){
     this.showme1=true;
   }else{
@@ -98,11 +122,11 @@ tryLogin(){
 }
 
 login(){
-  
-  this.saveData();
+this.saveData();
+this.user = this.client + this.id;
 console.log(this.nombre);
 console.log(this.password);
-console.log(this.user);
+console.log("Ojito " + this.user);
   let log = {
 
     "$class": "zoom.app.Login",
@@ -113,10 +137,11 @@ console.log(this.user);
 
   this.api.login(log).subscribe(
     result => {
+      this.events.publish('userInfo',result);
       console.log(result);
       this.error=false;
       if(this.typeuser=="Cliente"){
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(HomePage,log);
       }else if(this.typeuser=="Transportista"){
         this.navCtrl.setRoot(TransportistaPage);
       }else if(this.typeuser=="Vendedor"){

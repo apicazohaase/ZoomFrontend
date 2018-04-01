@@ -10,16 +10,15 @@
 
 <ion-content padding>
 <ion-row>
-  <ion-col col-9>
-      <p>Bienvenido</p>
+  <ion-col col-8>
+      <p style="font-weight:bold;font-style:italic;">Bienvenido</p>
   </ion-col>
-  <ion-col col-3>
+  <ion-col col-4>
       <button ion-button class="botonlogout" (click)="logout()">
-          <ion-icon name="log-out" class="logout"></ion-icon>
+          <img src="assets/imgs/logout.png" class="img">
   </button>
   </ion-col>
 </ion-row>
-<hr class="hr">
 <ion-grid class="grid">
   <ion-row style="width:100%;height:10%">
       <p style="margin-left:4%;margin-bottom:1%">Pedidos</p>
@@ -37,7 +36,11 @@
   <p>Nombre comprador</p>
   </ion-row>
   <ion-row style="width:100%;height:20%">
-      <p style="color:blue">{{pedido.status}}</p>
+    <p style="color:blue" *ngIf="pedido.status=='CONFIRMED'">{{pedido.status}}</p>
+    <p style="color:blue" *ngIf="pedido.status=='PENDING'">{{pedido.status}}</p>
+    <p style="color:green" *ngIf="pedido.status=='DELIVERED'">{{pedido.status}}</p>
+    <p style="color:red" *ngIf="pedido.status=='DECLINED'">{{pedido.status}}</p>
+    <p style="color:yellow" *ngIf="pedido.status=='INTRANSIT'">{{pedido.status}}</p>
       </ion-row>
   <ion-row style="width:100%;height:20%"></ion-row>
 </ion-col>

@@ -8,7 +8,11 @@ page-vendedor {
         border-radius: 30%;
         border-style: solid;
         border-width: 1px;
-        background-color: rgb(194, 3, 3);
+        background-color: rgb(0, 33, 221);
+    }
+    .img{
+        width:20px;
+        height:20px;
     }
     .hr{
         color: #E9E9E9;
@@ -26,6 +30,7 @@ page-vendedor {
     }
     .grid{
         width: 100%;
+        margin-top: 2%;
         border-radius: 2px;
         border-color: #E9E9E9;
         border-width: 1px;

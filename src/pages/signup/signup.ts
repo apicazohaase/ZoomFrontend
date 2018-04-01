@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiClientService } from '../../cliente/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SignupPage page.
@@ -111,6 +112,7 @@ export class SignupPage {
           console.log(result);
           this.error=false;
           console.log("enviado");
+          this.navCtrl.popToRoot();
         },
         error=>{
           this.error=true;

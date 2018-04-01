@@ -16,16 +16,21 @@ export class PerfilPage {
   public localidad:any;
   public ciudad:any;
   public telefono:any;
-  public id:string;
   public password:string;
   public canWrite:boolean;
   public password2:string;
+  public data:any;
+  public personId:any;
 
   constructor(public api: ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
     this.seeSettings=false;
     this.canWrite=false;
-    this.id= '1';
-    this.api.getClient(this.id).subscribe(
+    this.data = this.navParams.data;
+    let idLong = this.data.defaultUser;
+    let splitted = idLong.split("#");
+    this.personId = splitted[1];
+    
+    this.api.getClient(this.personId).subscribe(
       result => {
         console.log(result);
           this.password = result.body.password;
@@ -39,6 +44,7 @@ export class PerfilPage {
       error => {
       console.log(error);
     });
+    
   }
 
 actualizarInfo(){
@@ -57,7 +63,7 @@ actualizarInfo(){
       "street": this.direccion
     }
   }
-  this.api.editProfile(this.id,data).subscribe(
+  this.api.editProfile(this.personId,data).subscribe(
     result => {
 
     },
@@ -67,7 +73,7 @@ actualizarInfo(){
 }
 
   getParameters(){
-    this.api.getClient(this.id).subscribe(
+    this.api.getClient(this.personId).subscribe(
       result => {
         console.log(result);
           this.usuario= result.body.name;     

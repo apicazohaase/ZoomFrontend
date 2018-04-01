@@ -50,7 +50,11 @@
               <p style="font-weight:400">ID: {{pedido.id}}</p>
             </ion-row>
             <ion-row style="width:100%;height:25%">
-                <p style="color:blue">{{pedido.status}}</p>
+                <p style="color:blue" *ngIf="pedido.status=='CONFIRMED'">{{pedido.status}}</p>
+                <p style="color:blue" *ngIf="pedido.status=='PENDING'">{{pedido.status}}</p>
+                <p style="color:green" *ngIf="pedido.status=='DELIVERED'">{{pedido.status}}</p>
+                <p style="color:red" *ngIf="pedido.status=='DECLINED'">{{pedido.status}}</p>
+                <p style="color:yellow" *ngIf="pedido.status=='INTRANSIT'">{{pedido.status}}</p>
             </ion-row>
 
           </ion-col>
@@ -61,7 +65,7 @@
             <img src="assets/imgs/keyboard.png" *ngIf="pedido.product == 'Logitech G213'" style="width:50%;height:50%">
           </ion-col>
           <ion-col col-2 style="align-self:center;text-align:center">
-              <ion-icon ios="ios-camera" md="md-camera" (click)="click(pedido)"></ion-icon>
+              <ion-icon ios="ios-camera" md="md-camera" (click)="readQR(pedido)"></ion-icon>
           </ion-col>
          
           </ion-row>

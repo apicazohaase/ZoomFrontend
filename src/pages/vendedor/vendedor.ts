@@ -18,34 +18,37 @@ export class VendedorPage {
   constructor(public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
     this.pedidosList = [];
     this.visible=false;
-    console.log("holi");
-/*
-  this.events.subscribe('ordersMade',
-  (orderCreated)=>{*/
-    this.api.getAllOrders().subscribe(
-      result=>{
-        console.log("Hola");
-        this.pedidosList = result.body;
-        console.log(result.body);
-        console.log(result.body[0].product)
-        for(var i=0;i<result.body.length;i++){
-          if(result.body[i].product == "resource:zoom.app.Product#1"){
-            this.pedidosList[i].product = 'Logitech G Pro';
-          }else if(result.body[i].product == "resource:zoom.app.Product#2"){
-            this.pedidosList[i].product = 'Logitech G213';
-          }else if(result.body[i].product == "resource:zoom.app.Product#3"){
-            this.pedidosList[i].product = 'ASUS MX239H';
-          }else if(result.body[i].product == "resource:zoom.app.Product#4"){
-            this.pedidosList[i].product = 'Logitech G430';
+    this.events.publish('ordersInfo')
+    this.events.subscribe('ordersInfo',
+    (ordersInfo)=>{
+      this.api.getAllOrders().subscribe(
+        result=>{
+          console.log("Hola");
+          this.pedidosList = result.body;
+          console.log(result.body);
+          console.log(result.body[0].product)
+          for(var i=0;i<result.body.length;i++){
+            if(result.body[i].product == "resource:zoom.app.Product#1"){
+              this.pedidosList[i].product = 'Logitech G Pro';
+            }else if(result.body[i].product == "resource:zoom.app.Product#2"){
+              this.pedidosList[i].product = 'Logitech G213';
+            }else if(result.body[i].product == "resource:zoom.app.Product#3"){
+              this.pedidosList[i].product = 'ASUS MX239H';
+            }else if(result.body[i].product == "resource:zoom.app.Product#4"){
+              this.pedidosList[i].product = 'Logitech G430';
+            }
+            
           }
-          
-        }
-        console.log(this.pedidosList[0].product);
-}, error=>{
-        console.log(error);
-      });
-  /*});*/
+          console.log(this.pedidosList[0].product);
+  }, error=>{
+          console.log(error);
+        });
+    
+  });
+
+
 }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VendedorPage');
@@ -87,7 +90,7 @@ export class VendedorPage {
         console.log(split);
         this.visible=true;
         this.mensaje = "El pedido " + orderId + " ha sido confirmado";
-        this.events.publish('ordersMade');
+        this.events.publish('ordersInfo');
       },
       error=>{
         console.log(error);

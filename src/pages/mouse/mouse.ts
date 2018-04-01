@@ -18,8 +18,10 @@ export class MousePage {
   public descripcion:any;
   public status:any;
   public direccion:any;
+  public idPersona:any;
 
   constructor(public alertCtrl:AlertController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
+    this.idPersona = this.navParams.data;
     this.id='1';
     this.api.getAProduct(this.id).subscribe(
       result => {
@@ -40,7 +42,7 @@ export class MousePage {
       console.log(error);
     });
 
-    this.api.getClient(this.id).subscribe(
+    this.api.getClient(this.idPersona).subscribe(
       result=>{
         console.log('Cliente ' + result.body);
         this.direccion = 'Enviar a ' + '' + result.body.street;
@@ -59,14 +61,14 @@ export class MousePage {
     let compra = {
       
         "$class": "zoom.app.BuyAProduct",
-        "client": "resource:zoom.app.Client#" + this.id,
+        "client": "resource:zoom.app.Client#" + this.idPersona,
         "transport": "resource:zoom.app.Transport#1",
         "vendor": "resource:zoom.app.Vendor#1",
         "product": "resource:zoom.app.Product#" + this.id
       };
       this.api.compraDeProducto(compra).subscribe(
         result=>{
-          this.events.publish('ordersMade');
+          this.events.publish('orderCreated');
           console.log("Success");
         },
         error=>{
@@ -94,9 +96,6 @@ export class MousePage {
       ]
     });
     alert.present();
-  }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MousePage');
   }
 
 }

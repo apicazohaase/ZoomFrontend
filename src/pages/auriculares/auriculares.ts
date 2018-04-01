@@ -18,11 +18,11 @@ export class AuricularesPage {
   public descripcion:any;
   public status:any;
   public direccion:any;
-  public id2:string;
+  public idPersona:any;
 
   constructor(public alertCtrl:AlertController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
     this.id='4';
-    this.id2='1';
+    this.idPersona = this.navParams.data;
     this.api.getAProduct(this.id).subscribe(
       result => {
         this.peso = result.body.weight + '' + 'kg';
@@ -42,7 +42,7 @@ export class AuricularesPage {
       console.log(error);
     });
 
-    this.api.getClient(this.id2).subscribe(
+    this.api.getClient(this.idPersona).subscribe(
       result=>{
         console.log('Cliente ' + result.body);
         this.direccion = 'Enviar a ' + '' + result.body.street;
@@ -61,7 +61,7 @@ export class AuricularesPage {
     let compra = {
       
         "$class": "zoom.app.BuyAProduct",
-        "client": "resource:zoom.app.Client#" + this.id2,
+        "client": "resource:zoom.app.Client#" + this.idPersona,
         "transport": "resource:zoom.app.Transport#1",
         "vendor": "resource:zoom.app.Vendor#1",
         "product": "resource:zoom.app.Product#" + this.id

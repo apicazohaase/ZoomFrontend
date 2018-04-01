@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ApiClientService } from '../../cliente';
 import { KeyboardPage } from '../keyboard/keyboard';
@@ -32,10 +32,20 @@ export class HomePage {
   visible2:boolean;
   visible3:boolean;
   visible4:boolean;
+  person:any;
+  personId:any;
+  public data:any;
+  public nombre:any;
 
-  constructor(public api:ApiClientService, public navCtrl: NavController) {
+  constructor(public events:Events, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
     //this.productList = [];
     /* Get all the products from the blockchain and add them to the productList */
+/*
+    this.events.subscribe('userInfo', (userInfo)=>{
+      this.data=userInfo;
+      this.nombre = userInfo.body.name;
+      console.log(userInfo.body.name);
+    });*/
     this.api.getProducts().subscribe(
       result=>{
         //this.productList = result.body;
@@ -74,19 +84,16 @@ export class HomePage {
       error=>{
         console.log(error);
       });
-    //this.nombreProductoOferta = this.productList[0].name;
-    //this.precioProductoOferta = this.productList[0].price + "€";
-/*
-    this.name1 = this.productList[0].name;
-    this.name2 = this.productList[1].name;
-    this.name3 = this.productList[2].name;
-    this.name4 = this.productList[3].name;
 
-    this.price1 = this.productList[0].price;
-    this.price2 = this.productList[1].price;
-    this.price3 = this.productList[2].price;
-    this.price4= this.productList[3].price;
-*/
+  }
+
+  ionViewDidLoad(){
+    this.person = this.navParams.data;
+    let idLong = this.person.defaultUser;
+    let splitted = idLong.split("#");
+    this.personId = splitted[1];
+    console.log(this.person);
+    console.log(this.personId);
   }
 
   ngOnInit(){
@@ -115,15 +122,15 @@ export class HomePage {
   }
 
   keyboard(){
-    this.navCtrl.push(KeyboardPage);
+    this.navCtrl.push(KeyboardPage,this.personId);
   }
   
   mouse(){
-    this.navCtrl.push(MousePage);
+    this.navCtrl.push(MousePage,this.personId);
   }
 
   auriculares(){
-    this.navCtrl.push(AuricularesPage);
+    this.navCtrl.push(AuricularesPage,this.personId);
   }
 
 
