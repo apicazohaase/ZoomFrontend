@@ -33,10 +33,10 @@
     
   </ion-row>
   <ion-row style="width:100%;height:20%">
-  <p>Nombre comprador</p>
+  <p>ID Cliente: {{pedido.client}}</p>
   </ion-row>
   <ion-row style="width:100%;height:20%">
-    <p style="color:blue" *ngIf="pedido.status=='CONFIRMED'">{{pedido.status}}</p>
+    <p style="color:rgb(0, 247, 255)" *ngIf="pedido.status=='CONFIRMED'">{{pedido.status}}</p>
     <p style="color:blue" *ngIf="pedido.status=='PENDING'">{{pedido.status}}</p>
     <p style="color:green" *ngIf="pedido.status=='DELIVERED'">{{pedido.status}}</p>
     <p style="color:red" *ngIf="pedido.status=='DECLINED'">{{pedido.status}}</p>
@@ -49,7 +49,7 @@
     <p style="font-weight:bold">ID: {{pedido.id}}</p>
   </ion-row>
   <ion-row style="width:100%;height:20%">
-      <button ion-button  [disabled]="pedido.status!=PENDING" (click)="confirmarPedido(pedido)">Confirmar pedido</button>
+      <button ion-button  [disabled]="pedido.status!='PENDING'" (click)="confirmarPedido(pedido)">Confirmar pedido</button>
   </ion-row>
   
 </ion-col>

@@ -1,5 +1,5 @@
 <ion-content class="fondo" padding>
-<ion-grid  style="height:100%;display: fixed;" class="gridPrincipal">
+<ion-grid>
     
   <ion-row>
       <ion-icon ios="ios-arrow-back" md="md-arrow-back" class="logo1" (click)="volver()"></ion-icon>
@@ -11,51 +11,49 @@
             Registro
           </ion-card-header>
         
-          <ion-card-content style="height:80%;padding-bottom:0%;">
+          <ion-card-content style="height:86%;padding-bottom:0%;">
                 
-              <ion-row  style="height:94%">
+              <ion-row  style="height:90%;width:100%">
               <ion-col no-padding  style="height:100%">
-                  <ion-scroll scrollY="true" >
-                        <form (ngSubmit)="saveData()" [formGroup]="myForm" style="width:100%;height:100%">
+                 
+                      
                   <ion-row align-items-center class="rowUser">
                       <ion-icon ios="ios-person" md="md-person" class="logo"></ion-icon>
-                      <ion-input  formControlName="nombreE" [(ngModel)]="nombre" placeholder="Usuario" class="text"></ion-input>
+                      <ion-input   [(ngModel)]="nombre" placeholder="Usuario" class="text"></ion-input>
                   </ion-row>
                   <ion-row align-items-center class="rowPassword">
                       <ion-icon ios="ios-lock" md="md-lock" class="logo"></ion-icon>
-                      <ion-input  formControlName="passwordE" [(ngModel)]="password" placeholder="Contraseña" type="password" class="text"></ion-input>
+                      <ion-input   [(ngModel)]="password" placeholder="Contraseña" type="password" class="text"></ion-input>
                   </ion-row>
                   <ion-row align-items-center class="rowPassword2">
                       <ion-icon ios="ios-lock" md="md-lock" class="logo"></ion-icon>
-                      <ion-input formControlName="password2E" [(ngModel)]="password2" placeholder="Confirmar contraseña" type="password" class="text"></ion-input>
+                      <ion-input  [(ngModel)]="password2" placeholder="Confirmar contraseña" type="password" class="text"></ion-input>
                   </ion-row>
                   <ion-row align-items-center class="rowMail">
                       <ion-icon ios="ios-mail" md="md-mail" class="logo"></ion-icon>
-                      <ion-input formControlName="mailE" [(ngModel)]="mail" placeholder="Correo electrónico" class="text"></ion-input>
+                      <ion-input [(ngModel)]="mail" placeholder="Correo electrónico" class="text"></ion-input>
                   </ion-row>
                   <ion-row align-items-center class="rowLocation">
                       <ion-icon ios="ios-pin" md="md-pin" class="logo"></ion-icon>
-                      <ion-input formControlName="calleE" [(ngModel)]="calle" placeholder="Dirección" class="text"></ion-input>
+                      <ion-input  [(ngModel)]="calle" placeholder="Dirección" class="text"></ion-input>
                   </ion-row>
                   <ion-row align-items-center class="rowNumber">
                     <ion-icon ios="ios-pin" md="md-pin" class="logo"></ion-icon>
-                    <ion-input formControlName="localidadE" [(ngModel)]="localidad" class="text" placeholder="Localidad" ></ion-input>
+                    <ion-input  [(ngModel)]="localidad" class="text" placeholder="Localidad" ></ion-input>
                 </ion-row>
                 <ion-row align-items-center class="rowNumber">
                     <ion-icon ios="ios-pin" md="md-pin" class="logo"></ion-icon>
-                    <ion-input  formControlName="ciudadE" [(ngModel)]="ciudad" class="text" placeholder="Ciudad" ></ion-input>
+                    <ion-input [(ngModel)]="ciudad" class="text" placeholder="Ciudad" ></ion-input>
                 </ion-row>
                 <ion-row align-items-center class="rowNumber">
                         <ion-icon ios="ios-phone-portrait" md="md-phone-portrait" class="logo"></ion-icon>
-                        <ion-input formControlName="telefonoE" [(ngModel)]="telefono" class="text" placeholder="Teléfono" ></ion-input>
+                        <ion-input [(ngModel)]="telefono" class="text" placeholder="Teléfono" ></ion-input>
                 </ion-row>
             
-                      
-                    </form>
-                      </ion-scroll>
+                     
                     </ion-col>
                 </ion-row>
-                    <ion-row>
+                    <ion-row style="height:10%;width:100%">
                     <button ion-button class="button" (click)="signUp()" style="width:100%" >Registrarse</button>
                     </ion-row>
                 

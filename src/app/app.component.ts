@@ -26,6 +26,11 @@ export class MyApp {
 
   constructor(public events: Events, public api:ApiClientService, public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     console.log("Holaa");
+
+    this.events.subscribe('ordersInfo', (ordersInfo)=>{
+      console.log(ordersInfo);
+    });
+
     this.events.subscribe('userInfo', (userInfo)=>{
       this.data=userInfo.body;
       this.nombre = userInfo.body.name;

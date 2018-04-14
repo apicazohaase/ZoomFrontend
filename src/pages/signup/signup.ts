@@ -4,12 +4,6 @@ import { ApiClientService } from '../../cliente/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginPage } from '../login/login';
 
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -39,10 +33,8 @@ export class SignupPage {
   public localidadE:any;
 
   
- 
-
   constructor(public api: ApiClientService, public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
-    this.myForm = this.createMyForm();
+
   }
 
   ionViewDidLoad() {
@@ -53,42 +45,10 @@ export class SignupPage {
     this.navCtrl.popToRoot();
   }
 
-  createMyForm(){
-    return this.formBuilder.group({
-      passwordE: ["",Validators.compose([
-        Validators.required
-      ])],
-      password2E: ["",Validators.compose([
-        Validators.required
-      ])],
-      mailE: ["",Validators.compose([
-        Validators.required
-      ])],
-      telefonoE: ["",Validators.compose([
-        Validators.required
-      ])],
-      nombreE: ["",Validators.compose([
-        Validators.required
-      ])],
-      ciudadE: ["",Validators.compose([
-        Validators.required
-      ])],
-      calleE: ["",Validators.compose([
-        Validators.required
-      ])],
-      localidadE: ["",Validators.compose([
-        Validators.required
-      ])]
-    });
-  }
+  
 
   signUp(){
-    console.log("holi");
-    this.saveData();
-    console.log(this.nombre);
-    console.log(this.mail);
-    console.log(this.passwordE);
-    console.log(this.password2E);
+    
     let sign = {
       "$class": "zoom.app.Register",
       "client": {
@@ -123,18 +83,6 @@ export class SignupPage {
       if(this.error==false){
         this.navCtrl.push(SignupPage);
       }
-    }
-
-    saveData(){
-      this.nombre=this.myForm.value.nombreE;
-      this.password=this.myForm.value.passwordE;
-      this.password2=this.myForm.value.password2E;
-      this.calle=this.myForm.value.calleE;
-      this.mail=this.myForm.value.mailE;
-      this.localidad=this.myForm.value.localidadE;
-      this.ciudad=this.myForm.value.ciudadE;
-      this.telefono=this.myForm.value.telefonoE;
-
     }
 
 }

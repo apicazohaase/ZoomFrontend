@@ -123,7 +123,10 @@ tryLogin(){
 
 login(){
 this.saveData();
-this.user = this.client + this.id;
+if(this.typeuser=="Cliente"){
+  this.user = this.client + this.id;
+}
+
 console.log(this.nombre);
 console.log(this.password);
 console.log("Ojito " + this.user);

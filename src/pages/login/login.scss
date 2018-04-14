@@ -1,7 +1,9 @@
 page-login {
     .fondo{
         background: linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
-        display: fixed;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center; 
     }
     .icon{
         width:100%;

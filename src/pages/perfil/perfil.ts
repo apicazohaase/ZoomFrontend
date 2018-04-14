@@ -9,8 +9,8 @@ import { ApiClientService } from '../../cliente/index';
   templateUrl: 'perfil.html',
 })
 export class PerfilPage {
-  public seeSettings:boolean;
   public usuario:any;
+  public saveChanges:boolean;
   public correo:any;
   public direccion:any;
   public localidad:any;
@@ -23,7 +23,7 @@ export class PerfilPage {
   public personId:any;
 
   constructor(public api: ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
-    this.seeSettings=false;
+    this.saveChanges=false;
     this.canWrite=false;
     this.data = this.navParams.data;
     let idLong = this.data.defaultUser;
@@ -47,53 +47,35 @@ export class PerfilPage {
     
   }
 
-actualizarInfo(){
+saveProfile(){
   let data = {
-    "$class": "zoom.app.Register",
-    "client": {
+   
       "$class": "zoom.app.Client",
       "participante": "CLIENT",
       "name": this.usuario,
-      "password": "12345",
-      "confirmPassword": "12345",
+      "password": this.password,
+      "confirmPassword": this.password,
       "mail": this.correo,
       "number": this.telefono,
       "city": this.ciudad,
       "localidad": this.localidad,
       "street": this.direccion
-    }
+    
   }
+  console.log(data);
   this.api.editProfile(this.personId,data).subscribe(
     result => {
-
+      this.saveChanges=false;
+      console.log("PROFILE UPDATED")
     },
     error => {
       console.log(error);
     });
 }
 
-  getParameters(){
-    this.api.getClient(this.personId).subscribe(
-      result => {
-        console.log(result);
-          this.usuario= result.body.name;     
-          this.correo = result.body.mail; 
-          this.telefono = result.body.number; 
-          this.ciudad = result.body.city;
-          this.localidad = result.body.localidad;
-          this.direccion = result.body.street;
-      },
-      error => {
-      console.log(error);
-    });
-    
-
-
-  }
-
-  showSettings(){
-    this.seeSettings=true;
+  editProfile(){
     this.canWrite=true;
+    this.saveChanges=true;
   }
   
   ionViewDidLoad() {

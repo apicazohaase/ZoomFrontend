@@ -18,9 +18,49 @@ export class VendedorPage {
   constructor(public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
     this.pedidosList = [];
     this.visible=false;
-    this.events.publish('ordersInfo')
+
+      this.api.getAllOrders().subscribe(
+        result=>{
+          console.log("Hola");
+          this.pedidosList = result.body;
+          
+          console.log(result.body);
+          console.log("STATUS " + this.pedidosList[0].status)
+          for(var i=0;i<result.body.length;i++){
+            let comprador = result.body[i].client.split('#');
+            let idComprador = comprador[1];
+            this.pedidosList[i].client =  idComprador;
+            console.log(this.pedidosList[i].client);
+            if(result.body[i].product == "resource:zoom.app.Product#1"){
+              this.pedidosList[i].product = 'Logitech G Pro';
+            }else if(result.body[i].product == "resource:zoom.app.Product#2"){
+              this.pedidosList[i].product = 'Logitech G213';
+            }else if(result.body[i].product == "resource:zoom.app.Product#3"){
+              this.pedidosList[i].product = 'ASUS MX239H';
+            }else if(result.body[i].product == "resource:zoom.app.Product#4"){
+              this.pedidosList[i].product = 'Logitech G430';
+            }
+            
+            console.log('IDCOMPRADOR ' + idComprador); 
+            
+            console.log('IDCOMPRADOR2 ' + this.pedidosList[i].client); 
+          }
+          this.events.publish('ordersInfo',result.body);
+          console.log(this.pedidosList[0].product);
+  }, error=>{
+          console.log(error);
+        });
+    
+
+
+}
+
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad VendedorPage');
     this.events.subscribe('ordersInfo',
     (ordersInfo)=>{
+      console.log("DATA " + ordersInfo.data);
       this.api.getAllOrders().subscribe(
         result=>{
           console.log("Hola");
@@ -28,6 +68,9 @@ export class VendedorPage {
           console.log(result.body);
           console.log(result.body[0].product)
           for(var i=0;i<result.body.length;i++){
+            let comprador = result.body[i].client.split('#');
+            let idComprador = comprador[1];
+            this.pedidosList[i].client =  idComprador;
             if(result.body[i].product == "resource:zoom.app.Product#1"){
               this.pedidosList[i].product = 'Logitech G Pro';
             }else if(result.body[i].product == "resource:zoom.app.Product#2"){
@@ -45,13 +88,6 @@ export class VendedorPage {
         });
     
   });
-
-
-}
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VendedorPage');
   }
 
   logout(){
@@ -90,7 +126,7 @@ export class VendedorPage {
         console.log(split);
         this.visible=true;
         this.mensaje = "El pedido " + orderId + " ha sido confirmado";
-        this.events.publish('ordersInfo');
+        this.events.publish('ordersInfo',result.body);
       },
       error=>{
         console.log(error);

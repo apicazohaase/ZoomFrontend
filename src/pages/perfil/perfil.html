@@ -12,63 +12,59 @@
 
 <ion-content>
   <ion-grid class="grid">
-    <ion-row align-items-center style="height:80%;width:100%">
-      <ion-col col-4></ion-col>
-      <ion-col col-4>
-          <img class="userimage" src="assets/imgs/user.png">
-      </ion-col>
-        <ion-col col-4>
-            <button ion-button class="botonlogout" (click)="logout()">
-                    <ion-icon name="log-out" class="logout"></ion-icon>
-                    <p class="textlogout">Cerrar Sesión</p>
-            </button>
-            
+    <ion-row class="rowPicName">
+        <ion-col col-5>
+            <img src="assets/imgs/profilepic.png" style="padding:12%;border-radius: 70%;">
         </ion-col>
+        <ion-col col-7>
+            <ion-row style="width: 100%;height: 30%"></ion-row>
+            <ion-input class="input" [readonly]="!canWrite" [(ngModel)]="usuario"></ion-input>
+            <ion-input class="input" [readonly]="!canWrite" [(ngModel)]="correo"></ion-input>
+          </ion-col>
     </ion-row>
-    <ion-row style="height:30%;width:100%">
-        <ion-col col-4></ion-col>
-        <ion-col col-4>
-                <button ion-button class="botoneditarperfil" (click)="showSettings()">Editar perfil</button>
-        </ion-col>
-        
-        <ion-col col-4></ion-col>
-    </ion-row>
-  </ion-grid>
-
-  
-        <hr style="width:84%"/>
-        <ion-card class="card" >
-      <ion-card-content style="height:84%;padding-bottom:0%;"> 
-      
-    <!--><form style="width:100%;height:100%"> <!-->
-
-    <ion-row>
-        <ion-input [(ngModel)]="usuario" [readonly]="!canWrite" class="text"></ion-input>
-    </ion-row>
-    <ion-row>
-        <ion-input  [(ngModel)]="correo" class="text" [readonly]="!canWrite"></ion-input>
-    </ion-row>
-    <ion-row>
-        <ion-input  [(ngModel)]="direccion" class="text" [readonly]="!canWrite"></ion-input>
-    </ion-row>
-    <ion-row>
-        <ion-input  [(ngModel)]="localidad" class="text" [readonly]="!canWrite"></ion-input>
-    </ion-row>
-    <ion-row>
-        <ion-input [(ngModel)]="ciudad"class="text" [readonly]="!canWrite"></ion-input>
-    </ion-row>
-    <ion-row>
-            <ion-input [(ngModel)]="telefono" class="text" [readonly]="!canWrite"></ion-input>
+    
+    <ion-row class="rowLocation">
+            <ion-row style="width:100%;height: 15%"></ion-row>
+        <ion-row style="width:100%;height: 15%;background-color:rgb(245, 245, 245)">
+            <p style="font-weight: bold;color: rgb(15, 116, 231);margin-left: 3% !important;margin:1%">Localizacion</p>
         </ion-row>
-    <!--> </form> <!-->
-    </ion-card-content>
-    </ion-card>
-    <ion-row align-items-center *ngIf="seeSettings==true">
-      <ion-col style="text-align:center;">
-          <button ion-button style="width:84%" (click)=actualizarInfo() >Actualizar</button>
-      </ion-col>
-       
+        <ion-row style="width:100%;height: 70%">
+                <ion-col col-12>
+                        <ion-input class="input2" [readonly]="!canWrite" [(ngModel)]="ciudad"></ion-input>
+                </ion-col>
+                <ion-col col-12>
+                        <ion-input class="input2" [readonly]="!canWrite" [(ngModel)]="localidad"></ion-input>
+                    </ion-col>
+                    <ion-col col-12>
+                            <ion-input class="input2" [readonly]="!canWrite" [(ngModel)]="direccion"></ion-input>
+                        </ion-col>
+        </ion-row>
+        
     </ion-row>
-      
+    <ion-row class="rowNumber">
+           
+            <ion-row style="width:100%;height: 15%;background-color:rgb(245, 245, 245)">
+                    <p style="font-weight: bold;color: rgb(15, 116, 231);margin-left: 3% !important;margin:1%">Teléfono</p>
+                </ion-row>
+                <ion-row style="width:100%;height:100%">
+                        <ion-col col-12>
+                                <ion-input class="input2" [readonly]="!canWrite" [(ngModel)]="telefono"></ion-input>
+                        </ion-col>
+                </ion-row>
+     </ion-row>
+     <ion-row class="rowBotones">
+        <ion-col col-6 style="text-align: center">
+            <button ion-button class="botonEditarPerfil" (click)="editProfile()" *ngIf="!saveChanges"><p class="text">Editar Perfil</p></button>
+            <button ion-button class="botonGuardarPerfil" (click)="saveProfile()"*ngIf="saveChanges"><p class="text">Guardar Cambios</p></button>
+        </ion-col>
+        <ion-col col-6 style="text-align: center">
+                <button ion-button class="botonSalir" (click)="logout()">
+                    <p class="text">Salir</p>
+                    <ion-icon  style="margin-left:12%;color:#ff5b5b;" name="md-log-out"></ion-icon>
+                </button>
+        </ion-col>
+     </ion-row>
+
+  </ion-grid>
 
 </ion-content>
