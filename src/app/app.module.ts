@@ -29,9 +29,11 @@ import { MousePageModule } from '../pages/mouse/mouse.module';
 import { KeyboardPageModule } from '../pages/keyboard/keyboard.module';
 import { AuricularesPage } from '../pages/auriculares/auriculares';
 import { AuricularesPageModule } from '../pages/auriculares/auriculares.module';
+import { OfertaPageModule } from '../pages/oferta/oferta.module';
 //import { ListenApiProvider } from '../providers/server-api/server-api':
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
+import { OfertaPage } from '../pages/oferta/oferta';
 
 
 
@@ -51,6 +53,7 @@ import { Toast } from '@ionic-native/toast';
     LoginPageModule,
     PerfilPageModule,
     MousePageModule,
+    OfertaPageModule,
     KeyboardPageModule,
     MispedidosPageModule,
     AuricularesPageModule,
@@ -66,6 +69,7 @@ import { Toast } from '@ionic-native/toast';
     KeyboardPage,
     TransportistaPage,
     VendedorPage,
+    OfertaPage,
     AuricularesPage,
     SignupPage,
     ForgotpassPage,

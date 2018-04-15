@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, LoadingController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { ForgotpassPage } from '../forgotpass/forgotpass';
 import { HomePage } from '../home/home';
@@ -36,7 +36,7 @@ export class LoginPage {
   public client:string="resource:zoom.app.Client#";
   public transport:string="resource:zoom.app.Transport#1";
   public user:string;
-  constructor(public events:Events, public api:ApiClientService, public formBuilder:FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events:Events,public loadingCtrl: LoadingController,public api:ApiClientService, public formBuilder:FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
     this.myForm = this.createMyForm();
     this.typeuser="";
     this.showme1 = false;
@@ -137,6 +137,10 @@ console.log("Ojito " + this.user);
     "name": this.nombre,
     "password": this.password
   };
+  let loading = this.loadingCtrl.create({
+    content: 'Logging in...'
+  });
+  loading.present();
 
   this.api.login(log).subscribe(
     result => {
@@ -150,7 +154,7 @@ console.log("Ojito " + this.user);
       }else if(this.typeuser=="Vendedor"){
         this.navCtrl.setRoot(VendedorPage);
       }
-      
+      loading.dismiss();
     },
     error=>{
       this.error=true;

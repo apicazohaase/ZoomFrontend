@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ApiClientService } from '../../cliente';
 
@@ -15,7 +15,7 @@ export class VendedorPage {
   public mensaje:string;
   public queProducto:string;
 
-  constructor(public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
+  constructor(public api:ApiClientService, public alertCtrl:AlertController,public navCtrl: NavController, public navParams: NavParams, public events:Events) {
     this.pedidosList = [];
     this.visible=false;
 
@@ -52,15 +52,10 @@ export class VendedorPage {
         });
     
 
-
-}
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad VendedorPage');
-    this.events.subscribe('ordersInfo',
+        /******************************/
+        this.events.subscribe('ordersInfo',
     (ordersInfo)=>{
-      console.log("DATA " + ordersInfo.data);
+      console.log("DATA " + ordersInfo);
       this.api.getAllOrders().subscribe(
         result=>{
           console.log("Hola");
@@ -88,6 +83,14 @@ export class VendedorPage {
         });
     
   });
+
+
+}
+
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad VendedorPage');
+    
   }
 
   logout(){
@@ -133,6 +136,28 @@ export class VendedorPage {
       }
     )
 
+  }
+  seguroLogOut(){
+    this.presentAlert();
+  }
+  presentAlert(){
+    const alert = this.alertCtrl.create({
+      title: "¿Seguro que quiere salir?",
+      buttons: [
+        {
+          text: "SI",
+          role: "OK",
+          handler: () => {
+            this.logout();
+          }
+        },
+        {
+          text: "NO",
+          role: "CANCEL"
+        }
+      ]
+    });
+    alert.present();
   }
 
 

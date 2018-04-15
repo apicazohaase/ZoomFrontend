@@ -41,6 +41,13 @@ export class ApiClientService {
         return this.sendRequest<any>('get',uri,headers,params,null);
     }
 
+    public getAnOrders(id:string):Observable<HttpResponse<any>> {
+        let uri = '/api/Order/' + id;
+        let headers = new HttpHeaders();
+        let params = new HttpParams();
+        return this.sendRequest<any>('get',uri,headers,params,null);
+    }
+
     public confirmOrder(data:any): Observable<HttpResponse<any>>{
         let uri = '/api/ConfirmationOrder';
         let headers = new HttpHeaders();

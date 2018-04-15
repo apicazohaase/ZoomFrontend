@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, AlertController } from 'ionic-angular';
 import { ApiClientService } from '../../cliente';
 import { BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
+import { LoginPage } from '../login/login';
 
 
 @IonicPage()
@@ -13,19 +14,31 @@ import { Toast } from '@ionic-native/toast';
 export class TransportistaPage {
   receiveData:any;
   id:any
+  pedidoSeleccionado = new Array();
   public pedidosAEntregar = new Array();
   idLargo:any;
 
-  constructor(public events:Events, private barCodeScanner: BarcodeScanner, private toast:Toast, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events:Events, public alertCtrl:AlertController,private barCodeScanner: BarcodeScanner, private toast:Toast, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
     this.pedidosAEntregar = [];
+    this.pedidoSeleccionado = [];
     this.events.publish('ordersInfo');
-    this.events.subscribe('ordersInfo',
-    ordersInfo=>{
-      console.log("Amoss");
     this.api.getAllOrders().subscribe(
       result=>{
+        console.log("Hola");
         this.pedidosAEntregar = result.body;
+        
+        console.log(result.body);
+        console.log("STATUS " + this.pedidosAEntregar[0].status)
         for(var i=0;i<result.body.length;i++){
+          let comprador = result.body[i].client.split('#');
+          let idComprador = comprador[1];
+          this.pedidosAEntregar[i].client =  idComprador;
+
+          let vendedor = result.body[i].client.split('#');
+          let idVendedor = comprador[1];
+          this.pedidosAEntregar[i].owner =  idVendedor;
+          
+          console.log(this.pedidosAEntregar[i].client);
           if(result.body[i].product == "resource:zoom.app.Product#1"){
             this.pedidosAEntregar[i].product = 'Logitech G Pro';
           }else if(result.body[i].product == "resource:zoom.app.Product#2"){
@@ -35,13 +48,46 @@ export class TransportistaPage {
           }else if(result.body[i].product == "resource:zoom.app.Product#4"){
             this.pedidosAEntregar[i].product = 'Logitech G430';
           }
+          
+          console.log('IDCOMPRADOR ' + idComprador); 
+          
+          console.log('IDCOMPRADOR2 ' + this.pedidosAEntregar[i].client); 
         }
-        console.log(this.pedidosAEntregar);
-      },
-      error=>{
+        this.events.publish('ordersInfo',result.body);
+        console.log(this.pedidosAEntregar[0].product);
+}, error=>{
         console.log(error);
-      }
-    )
+      });
+
+      this.events.subscribe('ordersInfo',
+    (ordersInfo)=>{
+      console.log("DATA " + ordersInfo);
+      this.api.getAllOrders().subscribe(
+        result=>{
+          console.log("Hola");
+          this.pedidosAEntregar = result.body;
+          console.log(result.body);
+          console.log(result.body[0].product)
+          for(var i=0;i<result.body.length;i++){
+            let comprador = result.body[i].client.split('#');
+            let idComprador = comprador[1];
+            this.pedidosAEntregar[i].client =  idComprador;
+            if(result.body[i].product == "resource:zoom.app.Product#1"){
+              this.pedidosAEntregar[i].product = 'Logitech G Pro';
+            }else if(result.body[i].product == "resource:zoom.app.Product#2"){
+              this.pedidosAEntregar[i].product = 'Logitech G213';
+            }else if(result.body[i].product == "resource:zoom.app.Product#3"){
+              this.pedidosAEntregar[i].product = 'ASUS MX239H';
+            }else if(result.body[i].product == "resource:zoom.app.Product#4"){
+              this.pedidosAEntregar[i].product = 'Logitech G430';
+            }
+            
+          }
+          console.log(this.pedidosAEntregar[0].product);
+  }, error=>{
+          console.log(error);
+        });
+    
   });
 }
 
@@ -62,14 +108,13 @@ export class TransportistaPage {
       console.log("ID " + this.id);
       this.idLargo = "resource:zoom.app.Order#" + this.id;
       console.log(this.idLargo);
-      console.log("barcodeData" + '' + barcodeData);
-      console.log("barcodeDataText" + '' + barcodeData.text)
       console.log("Entrando en scanning");
       console.log("Cambio");
 
-      
-
-      if(pedido.status == 'CONFIRMED'){
+      this.api.getAnOrders(this.id).subscribe(
+        result=>{
+          
+      if(result.body.status == 'CONFIRMED'){
         this.receiveData = {
         
           "$class": "zoom.app.ChangeStatusToInTransit",
@@ -78,29 +123,37 @@ export class TransportistaPage {
       }
         this.api.changeStatusToInTransit(this.receiveData).subscribe(
           result=>{
-            this.events.publish('ordersInfo');
-            console.log(result);
+            console.log("Entra en transit");
+            console.log(result.body);
+            this.events.publish('ordersInfo',result.body);
+            
           },
           error=>{
             console.log(error);
           });
       }
-      if(pedido.status == 'INTRANSIT'){
+      else if(result.body.status == 'INTRANSIT'){
         this.receiveData = {
         
           "$class": "zoom.app.ChangeStatusToDelivered",
           "order": this.idLargo
         
       }
-      this.api.changeStatusToDelivered(barcodeData.text).subscribe(
+      this.api.changeStatusToDelivered(this.receiveData).subscribe(
         result=>{
-          this.events.publish('ordersInfo');
+          this.events.publish('ordersInfo',result.body);
           console.log(result);
         },
         error=>{
           console.log(error);
         });
+      }else{
+        console.log("It shouldnt get in here :/");
       }
+        },error=>{
+          console.log(error);
+        });
+
     }, (error)=>{
       console.log(error);
       this.toast.show(`Product not found`, '5000', 'center').subscribe(
@@ -109,5 +162,33 @@ export class TransportistaPage {
         });
   });
 
+  
 }
+
+logout(){
+  this.navCtrl.setRoot(LoginPage);
+}
+seguroLogOut(){
+  this.presentAlert();
+}
+presentAlert(){
+  const alert = this.alertCtrl.create({
+    title: "¿Seguro que quiere salir?",
+    buttons: [
+      {
+        text: "SI",
+        role: "OK",
+        handler: () => {
+          this.logout();
+        }
+      },
+      {
+        text: "NO",
+        role: "CANCEL"
+      }
+    ]
+  });
+  alert.present();
+}
+
 }

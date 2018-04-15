@@ -6,10 +6,10 @@ import { ApiClientService } from '../../cliente';
 
 @IonicPage()
 @Component({
-  selector: 'page-keyboard',
-  templateUrl: 'keyboard.html',
+  selector: 'page-oferta',
+  templateUrl: 'oferta.html',
 })
-export class KeyboardPage {
+export class OfertaPage {
   public enStock:boolean;
   public id:string;
   public peso:any;
@@ -21,7 +21,7 @@ export class KeyboardPage {
   public idPersona:any;
 
   constructor(public alertCtrl:AlertController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
-    this.id='2';
+    this.id='3';
     this.idPersona = this.navParams.data;
     this.api.getAProduct(this.id).subscribe(
       result => {
@@ -100,5 +100,6 @@ export class KeyboardPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad KeyboardPage');
   }
+
 
 }

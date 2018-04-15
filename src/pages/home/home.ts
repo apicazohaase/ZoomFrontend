@@ -6,6 +6,7 @@ import { KeyboardPage } from '../keyboard/keyboard';
 import { MousePage } from '../mouse/mouse';
 import { AuricularesPage } from '../auriculares/auriculares';
 import { AnonymousSubject } from 'rxjs/Subject';
+import { OfertaPage } from '../oferta/oferta';
 
 @Component({
   selector: 'page-home',
@@ -119,6 +120,10 @@ export class HomePage {
         + minutes + ":" + seconds;
     console.log(this.dateToPrint); 
     */
+  }
+
+  ofertaPage(){
+    this.navCtrl.push(OfertaPage,this.personId);
   }
 
   keyboard(){

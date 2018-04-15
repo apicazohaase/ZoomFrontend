@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ApiClientService } from '../../cliente/index';
 
@@ -9,6 +9,7 @@ import { ApiClientService } from '../../cliente/index';
   templateUrl: 'perfil.html',
 })
 export class PerfilPage {
+  
   public usuario:any;
   public saveChanges:boolean;
   public correo:any;
@@ -21,9 +22,11 @@ export class PerfilPage {
   public password2:string;
   public data:any;
   public personId:any;
+  public recuerdame:any;
 
-  constructor(public api: ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public api: ApiClientService,public alertCtrl:AlertController, public navCtrl: NavController, public navParams: NavParams) {
     this.saveChanges=false;
+    this.recuerdame="Recuerdáme"
     this.canWrite=false;
     this.data = this.navParams.data;
     let idLong = this.data.defaultUser;
@@ -66,6 +69,7 @@ saveProfile(){
   this.api.editProfile(this.personId,data).subscribe(
     result => {
       this.saveChanges=false;
+      this.canWrite=false;
       console.log("PROFILE UPDATED")
     },
     error => {
@@ -82,6 +86,28 @@ saveProfile(){
     console.log('ionViewDidLoad PerfilPage');
   }
 
+  seguroLogOut(){
+    this.presentAlert();
+  }
+  presentAlert(){
+    const alert = this.alertCtrl.create({
+      title: "¿Seguro que quiere salir?",
+      buttons: [
+        {
+          text: "SI",
+          role: "OK",
+          handler: () => {
+            this.logout();
+          }
+        },
+        {
+          text: "NO",
+          role: "CANCEL"
+        }
+      ]
+    });
+    alert.present();
+  }
   logout(){
     this.navCtrl.setRoot(LoginPage);
   }
