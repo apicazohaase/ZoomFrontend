@@ -21,6 +21,8 @@ export class MyApp {
   activePage:any;
   public nombre:any;
   public data:any;
+  public nombre2:any;
+  public data2:any;
 
   pages: Array<{name: string, title: string, component: any}>;
 
@@ -29,6 +31,10 @@ export class MyApp {
 
     this.events.subscribe('ordersInfo', (ordersInfo)=>{
       console.log(ordersInfo);
+      /*
+      this.data2=ordersInfo.body;
+      this.nombre2 = ordersInfo.body.name;
+      */
     });
 
     this.events.subscribe('userInfo', (userInfo)=>{

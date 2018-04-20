@@ -34,13 +34,14 @@ import { OfertaPageModule } from '../pages/oferta/oferta.module';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { OfertaPage } from '../pages/oferta/oferta';
-
+import {CountDown} from "../../node_modules/angular2-simple-countdown/countdown";
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    CountDown
 
     
   ],

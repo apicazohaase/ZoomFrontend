@@ -61,21 +61,6 @@ export class LoginPage {
     this.nombre=this.myForm.value.nombreE;
     String(this.nombre);
     this.password=this.myForm.value.passwordE;
-
-    this.api.getAllClients().subscribe(
-      result=>{
-        for(var i=0;i<result.body.length;i++){
-          if(result.body[i].name==this.nombre){
-            this.id = result.body[i].id;
-            //this.user = this.client + this.id;
-          }
-          //this.user = this.client + this.id;
-          
-        }
-      },
-      error=>{
-        console.log(error);
-      });
   }
 
 
@@ -123,47 +108,60 @@ tryLogin(){
 
 login(){
 this.saveData();
-if(this.typeuser=="Cliente"){
-  this.user = this.client + this.id;
-}
-
-console.log(this.nombre);
-console.log(this.password);
-console.log("Ojito " + this.user);
-  let log = {
-
-    "$class": "zoom.app.Login",
-    "defaultUser": this.user,
-    "name": this.nombre,
-    "password": this.password
-  };
-  let loading = this.loadingCtrl.create({
-    content: 'Logging in...'
-  });
-  loading.present();
-
-  this.api.login(log).subscribe(
-    result => {
-      this.events.publish('userInfo',result);
-      console.log(result);
-      this.error=false;
-      if(this.typeuser=="Cliente"){
-        this.navCtrl.setRoot(HomePage,log);
-      }else if(this.typeuser=="Transportista"){
-        this.navCtrl.setRoot(TransportistaPage);
-      }else if(this.typeuser=="Vendedor"){
-        this.navCtrl.setRoot(VendedorPage);
+let loading = this.loadingCtrl.create({
+  content: 'Logging in...'
+});
+loading.present();
+  this.api.getAllClients().subscribe(
+    result=>{
+      for(var i=0;i<result.body.length;i++){
+        if(result.body[i].name==this.nombre){
+          this.id = result.body[i].id;
+          if(this.typeuser=="Cliente"){
+            this.user = this.client + this.id;
+          }
+          //this.user = this.client + this.id;
+          let log = {
+            
+                "$class": "zoom.app.Login",
+                "defaultUser": this.user,
+                "name": this.nombre,
+                "password": this.password
+              };
+             /* let loading = this.loadingCtrl.create({
+                content: 'Logging in...'
+              });
+              loading.present();*/
+            
+              this.api.login(log).subscribe(
+                result => {
+                  this.events.publish('userInfo',result);
+                  console.log(result);
+                  this.error=false;
+                  if(this.typeuser=="Cliente"){
+                    this.navCtrl.setRoot(HomePage,log);
+                  }else if(this.typeuser=="Transportista"){
+                    this.navCtrl.setRoot(TransportistaPage);
+                  }else if(this.typeuser=="Vendedor"){
+                    this.navCtrl.setRoot(VendedorPage);
+                  }
+                  loading.dismiss();
+                },
+                error=>{
+                  this.error=true;
+                  console.log(error);
+                  loading.dismiss();
+                }
+              )
+              
+        }
+        //this.user = this.client + this.id;
+        
       }
-      loading.dismiss();
     },
     error=>{
-      this.error=true;
       console.log(error);
-    }
-  )
-  
-  
-  
+    });
 }
 
 toRegister(){
