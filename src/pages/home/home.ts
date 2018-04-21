@@ -7,7 +7,7 @@ import { MousePage } from '../mouse/mouse';
 import { AuricularesPage } from '../auriculares/auriculares';
 import { AnonymousSubject } from 'rxjs/Subject';
 import { OfertaPage } from '../oferta/oferta';
-import {CountDown} from "../../../node_modules/angular2-simple-countdown/countdown";
+
 
 @Component({
   selector: 'page-home',
@@ -39,16 +39,7 @@ export class HomePage {
   public data:any;
   public nombre:any;
 
-  text:any = {
-    Year: 'Year',
-    Month: 'Month',
-    Weeks: "Weeks",
-    Days: "Days",
-    Hours: "Hours",
-    Minutes: "Minutes",
-    Seconds: "Seconds",
-    MilliSeconds: "MilliSeconds"
-  };
+  
 
 
   constructor(public events:Events, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams) {
