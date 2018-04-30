@@ -23,10 +23,11 @@ export class PerfilPage {
   public data:any;
   public personId:any;
   public recuerdame:any;
+  public creditCard:any;
 
   constructor(public api: ApiClientService,public alertCtrl:AlertController, public navCtrl: NavController, public navParams: NavParams) {
     this.saveChanges=false;
-    this.recuerdame="Recuerdáme"
+    this.recuerdame="Recuerdáme";
     this.canWrite=false;
     this.data = this.navParams.data;
     let idLong = this.data.defaultUser;
@@ -37,12 +38,14 @@ export class PerfilPage {
       result => {
         console.log(result);
           this.password = result.body.password;
+          let tarjeta = result.body.tarjetaCredito;
           this.usuario= result.body.name;     
           this.correo = result.body.mail; 
           this.telefono = result.body.number; 
           this.ciudad = result.body.city;
           this.localidad = result.body.localidad;
           this.direccion = result.body.street;
+          this.creditCard = tarjeta.substring(0,4) + "**************";
       },
       error => {
       console.log(error);
@@ -62,7 +65,8 @@ saveProfile(){
       "number": this.telefono,
       "city": this.ciudad,
       "localidad": this.localidad,
-      "street": this.direccion
+      "street": this.direccion,
+      "tarjetaCredito": this.creditCard
     
   }
   console.log(data);

@@ -161,6 +161,7 @@ loading.present();
     },
     error=>{
       console.log(error);
+      loading.dismiss();
     });
 }
 
