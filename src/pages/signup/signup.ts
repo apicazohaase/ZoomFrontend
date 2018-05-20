@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ApiClientService } from '../../cliente/index';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginPage } from '../login/login';
@@ -33,8 +33,7 @@ export class SignupPage {
   public localidadE:any;
 
   
-  constructor(public api: ApiClientService, public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
-
+  constructor(public api: ApiClientService, public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -48,6 +47,10 @@ export class SignupPage {
   
 
   signUp(){
+    let loading = this.loadingCtrl.create({
+      content: 'Creating account...'
+    });
+    loading.present();
     
     let sign = {
       "$class": "zoom.app.Register",
@@ -73,10 +76,12 @@ export class SignupPage {
           this.error=false;
           console.log("enviado");
           this.navCtrl.popToRoot();
+          loading.dismiss();
         },
         error=>{
           this.error=true;
           console.log(error);
+          loading.dismiss();
         }
       )
     

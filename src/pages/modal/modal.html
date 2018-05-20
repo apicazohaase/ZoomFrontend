@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Confirmación</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismissAlert()">
+        <ion-icon style="color:black" name='close-circle'></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <p style="font-weight: bold">Términos y condiciones de Zoom:</p>
+  <p>El usuario deberá respetar en todo momento los términos y condiciones establecidos en el presente aviso legal. De forma
+    expresa, el usuario manifiesta que utilizará el portal de forma diligente y asumiendo cualquier responsabilidad que pudiera
+    derivarse del incumplimiento de las normas. El usuario se obliga, en aquellos casos que se le soliciten datos o información,
+    a no falsear su identidad haciéndose pasar por cualquier otra persona. El usuario acepta que la utilización del Portal
+    será efectuada con fines estrictamente personales, privados y particulares. El usuario no podrá utilizar el portal para
+    actividades contrarias a la Ley, la moral y el orden público así como para finalidades prohibidas o que vulneren o lesionen
+    derechos de terceros. Asimismo, queda prohibida la difusión, almacenamiento y/o gestión de datos o contenidos que infrinjan
+    derechos de terceros o cualesquiera normativas reguladoras de derechos de propiedad intelectual o industrial. Así mismo,
+    el usuario no podrá utilizar el portal para transmitir, almacenar, divulgar promover o distribuir datos o contenidos
+    que sean portadores de virus o cualquier otro código informático, archivos o programas diseñados para interrumpir, destruir
+    o perjudicar el funcionamiento de cualquier programa o equipo informático o de telecomunicaciones. El usuario se obliga
+    a indemnizar y a mantener indemnes al portal por cualquier daño, perjuicio, sanción, multa, pena o indemnización que
+    tenga que hacer frente el portal.</p>
+
+  <p style="margin-top:1%">Los usuarios pueden acceder a través del portal a diferente tipo de información y servicios. El portal se reserva la facultad
+    de modificar, en cualquier momento, y sin aviso previo, la presentación y configuración de la información y servicios
+    ofrecidos desde el portal. El usuario reconoce y acepta expresamente que en cualquier momento el portal pueda interrumpir,
+    desactivar y/o cancelar cualquier información o servicio. El portal realizará sus mejores esfuerzos para intentar garantizar
+    la disponibilidad y accesibilidad a la web. No obstante, en ocasiones, por razones de mantenimiento, actualización, cambio
+    de ubicación, etc., podrá suponer la interrupción del acceso al portal.</p>
+  <ion-row>
+    <ion-col col-1>
+      <input type="checkbox">
+    </ion-col>
+    <ion-col col-11>
+      <p style="margin:0%">
+        Acepto los términos y condiciones
+      </p>
+    </ion-col>
+  </ion-row>
+  <hr style="color:grey">
+  <p style="font-weight: bold">Método de pago:</p>
+  <ion-select [(ngModel)]="metodoPago" (ionChange)="onSelectChange($event)"
+  [selectOptions]="{cssClass: 'popover-users'}" interface="popover" placeholder="Seleccionar">
+    <ion-option value="paypal">Paypal</ion-option>
+    <ion-option value="visa">Tarjeta Crédito</ion-option>
+  </ion-select>
+
+  <ion-input class="input" [readonly]="!canWrite" *ngIf="paypalBool" [(ngModel)]="correoUser"></ion-input>
+  
+  <ion-row>
+    <ion-col col-6>
+        <ion-input class="input" style="width:90%;margin:0%;padding:0%" [readonly]="!canWrite" *ngIf="visaBool" [(ngModel)]="tarjetaUser"></ion-input>
+    </ion-col>
+    <ion-col col-2>
+      <ion-input class="input" style="width:90%;margin:0%;padding:0%;margin-top:3%" *ngIf="visaBool"></ion-input>
+    </ion-col>
+    <ion-col col-4>
+      <p>CVV</p>
+    </ion-col>
+  </ion-row>
+  
+
+</ion-content>
+<ion-footer>
+  <button ion-button full color="danger" (click)="comprar()">Comprar</button>
+</ion-footer>

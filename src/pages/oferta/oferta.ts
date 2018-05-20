@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Events, ModalController, ViewController } from 'ionic-angular';
 import { ApiClientService } from '../../cliente';
+import { ModalPage } from '../modal/modal';
 
 
 
@@ -20,7 +21,9 @@ export class OfertaPage {
   public direccion:any;
   public idPersona:any;
 
-  constructor(public alertCtrl:AlertController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
+  rootPage:any;
+
+  constructor(public viewCtrl:ViewController, public alertCtrl:AlertController,public modalCtrl: ModalController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
     this.id='3';
     this.idPersona = this.navParams.data;
     this.api.getAProduct(this.id).subscribe(
@@ -54,30 +57,15 @@ export class OfertaPage {
   }
 
   comprarProducto(){
-    this.presentAlert();
+    this.openModal(ModalPage);
   }
 
-  comprar(){
-    let compra = {
-      
-        "$class": "zoom.app.BuyAProduct",
-        "client": "resource:zoom.app.Client#" + this.idPersona,
-        "transport": "resource:zoom.app.Transport#1",
-        "vendor": "resource:zoom.app.Vendor#1",
-        "product": "resource:zoom.app.Product#" + this.id
-      };
-      this.api.compraDeProducto(compra).subscribe(
-        result=>{
-          this.events.publish('ordersMade');
-          console.log("Success");
-        },
-        error=>{
-          console.log(error)
-        });
-    
+  
 
+  openModal(pageName) {
+    this.modalCtrl.create(pageName, {id:this.id}, { cssClass: 'inset-modal' }).present();
   }
-
+/*
   presentAlert(){
     const alert = this.alertCtrl.create({
       title: "¿Está seguro que quiere comprar el producto?",
@@ -97,6 +85,7 @@ export class OfertaPage {
     });
     alert.present();
   }
+  */
   ionViewDidLoad() {
     console.log('ionViewDidLoad KeyboardPage');
   }

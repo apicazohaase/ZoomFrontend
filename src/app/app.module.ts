@@ -34,14 +34,30 @@ import { OfertaPageModule } from '../pages/oferta/oferta.module';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { OfertaPage } from '../pages/oferta/oferta';
+import { LoginLoaderPage } from '../pages/login-loader/login-loader';
+import { LoginLoaderClientPage } from '../pages/login-loader-client/login-loader-client';
 
+import { IonicStorageModule } from '@ionic/storage';
+
+import { LoginLoaderPageModule } from '../pages/login-loader/login-loader.module';
+import { LoginLoaderClientPageModule } from '../pages/login-loader-client/login-loader-client.module';
+
+import { Timer } from '../components/countdown-timer/timer';
+import { EmptyPage } from '../pages/empty/empty';
+
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
+import { TimerProgress } from '../components/timer-progress/timer-progress';
+import { EmptyPageModule } from '../pages/empty/empty.module';
+import { ModalPage } from '../pages/modal/modal';
+import { ModalPageModule } from '../pages/modal/modal.module';
 
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-
+    Timer,
+    TimerProgress
     
   ],
   imports: [
@@ -52,22 +68,31 @@ import { OfertaPage } from '../pages/oferta/oferta';
     VendedorPageModule,
     LoginPageModule,
     PerfilPageModule,
+    LoginLoaderClientPageModule,
+    LoginLoaderPageModule,
+    EmptyPageModule,
     MousePageModule,
     OfertaPageModule,
     KeyboardPageModule,
     MispedidosPageModule,
+    ModalPageModule,
     AuricularesPageModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    EmptyPage,
+    ModalPage,
     LoginPage,
     MousePage,
     KeyboardPage,
     TransportistaPage,
+    LoginLoaderClientPage,
+    LoginLoaderPage,
     VendedorPage,
     OfertaPage,
     AuricularesPage,
@@ -83,7 +108,9 @@ import { OfertaPage } from '../pages/oferta/oferta';
     ApiClientService,
     BarcodeScanner,
     Toast,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Timer,
+    TimerProgress
   ]
 })
 export class AppModule {}

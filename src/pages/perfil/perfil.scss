@@ -85,7 +85,13 @@ page-perfil {
         width:100%;
         height:100%;
     }
-
+    .toggle-ios {
+        display: block; // for ios theme or mode
+        }
+        
+        .toggle-md {
+         display: block; // just in case if you use md in ios device
+        }
    
     
 }

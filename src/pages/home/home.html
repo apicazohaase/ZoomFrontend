@@ -22,42 +22,12 @@
             <img src="assets/imgs/asus1.jpg" style="width:66%;margin-left:14%">
           </ion-row>
           <ion-row style="height:28%">
-            <p style="width:100%;padding:0%;margin-left:4%">{{this.name3}}</p>
+            <p style="width:100%;padding:0%;margin-left:4% !important;margin:0%">{{this.name3}}</p>
             <p style="width:20%;margin-left:4%;color:rgb(156, 156, 156);">{{this.price3}}</p>
-            <p style="width:50%">Precio recomendado 350€</p>
-            <p style="width:100%;margin-left:4%" id="dateRemaining"></p>
-            
-            <!-->
-            <script>
-                // Set the date we're counting down to
-                var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
-                
-                // Update the count down every 1 second
-                var x = setInterval(function() {
-                
-                    // Get todays date and time
-                    var now = new Date().getTime();
-                    
-                    // Find the distance between now an the count down date
-                    var distance = countDownDate - now;
-                    
-                    // Time calculations for days, hours, minutes and seconds
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    
-                    // Output the result in an element with id="demo"
-                    document.getElementById("dateRemaining").innerHTML = days + "d " + hours + "h "
-                    + minutes + "m " + seconds + "s ";
-                    
-                    // If the count down is over, write some text 
-                    if (distance < 0) {
-                        clearInterval(x)
-                        document.getElementById("dateRemaining").innerHTML = "EXPIRED";
-                    }
-                }, 1000);
-                </script><!-->
+            <p style="width:50%">Precio recomendado: 350€</p>
+            <p style="margin:0%;padding:0%">
+                <timer #countdownTimer [timeInSeconds]="46405"></timer>
+            </p>
           </ion-row>
           <ion-row style="height:15%" >
             <hr class="hr">
@@ -143,10 +113,4 @@
   
              
           </ion-grid>
-          
-
-    <!--> </ion-scroll> <!-->
-
-
-
   </ion-content>

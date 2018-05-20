@@ -9,6 +9,8 @@ import { MispedidosPage } from '../pages/mispedidos/mispedidos';
 import { VendedorPage } from '../pages/vendedor/vendedor';
 import { TransportistaPage } from '../pages/transportista/transportista';
 import { ApiClientService } from '../cliente';
+import { EmptyPage } from '../pages/empty/empty';
+
 
 
 @Component({

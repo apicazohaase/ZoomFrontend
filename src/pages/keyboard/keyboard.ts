@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Events, ModalController } from 'ionic-angular';
 import { ApiClientService } from '../../cliente';
+import { ModalPage } from '../modal/modal';
 
 
 
@@ -20,7 +21,7 @@ export class KeyboardPage {
   public direccion:any;
   public idPersona:any;
 
-  constructor(public alertCtrl:AlertController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
+  constructor(public alertCtrl:AlertController, public modalCtrl: ModalController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
     this.id='2';
     this.idPersona = this.navParams.data;
     this.api.getAProduct(this.id).subscribe(
@@ -54,7 +55,11 @@ export class KeyboardPage {
   }
 
   comprarProducto(){
-    this.presentAlert();
+    this.openModal(ModalPage);
+  }
+  
+  openModal(pageName) {
+    this.modalCtrl.create(pageName, {id:this.id}, { cssClass: 'inset-modal' }).present();
   }
 
   comprar(){

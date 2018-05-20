@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { ApiClientService } from '../../cliente/index';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -24,15 +25,20 @@ export class PerfilPage {
   public personId:any;
   public recuerdame:any;
   public creditCard:any;
+  user:any;
 
-  constructor(public api: ApiClientService,public alertCtrl:AlertController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public api: ApiClientService,private storage:Storage, public alertCtrl:AlertController, public navCtrl: NavController, public navParams: NavParams) {
+    /*
     this.saveChanges=false;
     this.recuerdame="Recuerdáme";
     this.canWrite=false;
-    this.data = this.navParams.data;
-    let idLong = this.data.defaultUser;
-    let splitted = idLong.split("#");
-    this.personId = splitted[1];
+    this.storage.get('user').then((result)=>{
+      console.log(result);
+      this.user=result;
+      this.personId = result.defaultUser.split("#")[1];
+      console.log(this.personId);
+
+    })
     
     this.api.getClient(this.personId).subscribe(
       result => {
@@ -50,8 +56,41 @@ export class PerfilPage {
       error => {
       console.log(error);
     });
-    
+    */
   }
+
+ionViewDidLoad(){
+  this.saveChanges=false;
+    this.recuerdame="Recuerdáme";
+    this.canWrite=false;
+    this.storage.get('user').then((result)=>{
+      console.log(result);
+      this.user=result;
+      this.personId = result.defaultUser.split("#")[1];
+      console.log(this.personId);
+      this.api.getClient(this.personId).subscribe(
+        result => {
+          console.log(result);
+            this.password = result.body.password;
+            this.usuario= result.body.name;     
+            this.correo = result.body.mail; 
+            this.telefono = result.body.number; 
+            this.ciudad = result.body.city;
+            this.localidad = result.body.localidad;
+            this.direccion = result.body.street;
+            if(result.body.tarjetaCredito!=''){
+            this.creditCard = result.body.tarjetaCredito.substring(0,4) + "**************";
+            }
+        },
+        error => {
+        console.log(error);
+      });
+      
+
+    })
+    
+    
+}
 
 saveProfile(){
   let data = {
@@ -86,10 +125,6 @@ saveProfile(){
     this.saveChanges=true;
   }
   
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPage');
-  }
-
   seguroLogOut(){
     this.presentAlert();
   }

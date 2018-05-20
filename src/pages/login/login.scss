@@ -68,4 +68,21 @@ page-login {
         }
 
     }
+    .slide{
+        background-color:transparent;
+        .swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
+            opacity: 0;
+        }
+    }
+    .swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
+        opacity: 0;
+    }
 }
+
+.swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
+    opacity: 0;
+}
+
+    .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+        opacity: 0;
+    }

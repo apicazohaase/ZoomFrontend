@@ -8,7 +8,7 @@
   </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color:rgb(238, 238, 238)">
 <ion-row>
   <ion-col col-8>
       <p style="font-weight:bold;font-style:italic;">Bienvenido</p>
@@ -20,13 +20,11 @@
       </button>
   </ion-col>
 </ion-row>
-<ion-grid class="grid">
-  <ion-row style="width:100%;height:10%">
-      <p style="margin-left:4%;margin-bottom:1%">Pedidos</p>
-      <hr class="hr">
-</ion-row>
+<ion-grid *ngFor="let pedido of pedidosList; let i = index" style="background-color: white;
+border-style: solid;border-width: 1px;border-color:grey">
+  
 <ion-row style="width:100%;height:90%">
-<ion-row *ngFor="let pedido of pedidosList; let i = index" style="width:100%">
+<ion-row>
   <ion-col col-6>
     <ion-row style="width:100%;height:20%"></ion-row>
   <ion-row style="width:100%;height:20%">
@@ -54,7 +52,6 @@
   </ion-row>
   
 </ion-col>
-<hr class="hr2">
 </ion-row>
 
 </ion-row>

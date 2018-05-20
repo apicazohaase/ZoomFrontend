@@ -12,6 +12,9 @@
 
 
 <ion-content padding>
+  <p *ngIf="noHayPedidos">
+    No hay pedidos pendientes
+  </p>
 
 <ion-grid class="grid" *ngFor="let pedido of misPedidos; let i = index" style="width:100%">
     <ion-row>

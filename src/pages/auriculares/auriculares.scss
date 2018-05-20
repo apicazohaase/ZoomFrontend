@@ -3,11 +3,22 @@ page-auriculares {
         background: linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
     }
     .button{
-        width:60%;
+        width:90%;
+        background-color:rgb(243, 178, 0);
+        color: black;
+        font-weight: 400;
     }
+        
+    
     .enStock{
         color:green;
         margin: 0%;
+    }
+    .slide{
+        background-color:transparent;
+        .swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
+            opacity: 0;
+        }
     }
     .fueraStock{
         color:red;

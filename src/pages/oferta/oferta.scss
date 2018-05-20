@@ -3,7 +3,10 @@ page-oferta {
         background: linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
     }
     .button{
-        width:60%;
+        width:90%;
+        background-color:rgb(243, 178, 0);
+        color: black;
+        font-weight: 400;
     }
     .enStock{
         color:green;
@@ -39,4 +42,47 @@ page-oferta {
     .back-button-text-ios {
         opacity:0;
     }
+    .slide{
+        background-color:transparent;
+        .swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
+            opacity: 0;
+        }
+    }
+    ion-modal,
+    .show-page {
+      // transparent black background overlay
+      background-color: rgba(0, 0, 0, .5) !important;
+      padding: 50px !important;
+    }
+    .toolbar-background {
+      color: red !important;
+    }
+    ion-modal.modal-wrapper {
+      transform: translateY(30%) !important;
+    }
+    ion-page.modal {
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .modal-backdrop-bg {
+      background-color: #000;
+      opacity: 0;
+    }
+    .active .modal-backdrop-bg {
+      opacity: 0.5;
+    }
+  }
+  
+  ion-modal.inset-modal {
+    // transparent black background overlay
+    background-color: rgba(0, 0, 0, .5) !important;
+    transition: opacity .25s ease-in-out;
+    padding: 20vh 10vw;
+  }
+.swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
+    background-color: grey;
 }
+
+    .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets{
+        background-color: grey;
+    }

@@ -1,0 +1,91 @@
+page-login-loader {
+    ion-content{
+        background: linear-gradient(to bottom right,rgb(52, 53, 53),rgb(143, 143, 143));
+
+        .scroll-content{
+            overflow-y: hidden;
+            padding: 0% !important;
+        }
+
+        .login-loader {
+            text-align: center;
+            padding: 0 50px;
+    
+            .login-loader-img {
+                position: relative;
+                padding: 60px;
+                min-height: 250px;
+    
+                .dot {
+                    border: 20px solid rgb(180, 239, 241);
+                    margin-top: -20px;
+                    margin-left: -20px;
+                    background: transparent;
+                    border-radius: 100%;
+                    animation: pulse 1.5s ease-out;
+                    animation-iteration-count: infinite;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    z-index: 1;
+
+                    &.dot2 {
+                        border: 40px solid rgb(136, 136, 136);
+                        margin-top: -40px;
+                        margin-left: -40px;
+                        z-index: 0;
+                        animation-duration: 1.5s;
+                        background: transparent;
+
+                    }
+
+                    &.dot3 {
+                        border: 60px solid rgb(68, 68, 68);
+                        margin-top: -60px;
+                        margin-left: -60px;
+                        z-index: 0;
+                        animation-duration: 1.5s;
+                        background: transparent;
+
+                    }
+    
+                    &.dot4 {
+                        border: 75px solid rgb(19, 19, 19);
+                        margin-top: -75px;
+                        margin-left: -75px;
+                        z-index: 0;
+                        animation-duration: 1.5s;
+                        background: transparent;
+
+                    }
+                }
+            }
+        }
+
+        .name{
+            font-weight: bold;
+            color: rgb(221, 221, 221) ;;
+            font-size: 20px;
+            margin-top: 20%;
+        }
+        .connecting{
+            font-size: 14px;
+            color: rgb(209, 209, 209) ;;
+        }
+    }
+
+}
+
+@keyframes pulse {
+    0% {
+       transform: scale(1);
+       opacity: 0;
+    }
+    50% {
+       opacity: 0.4;
+    }
+    100% {
+       transform: scale(1.4);
+       opacity: 0;
+    }
+}

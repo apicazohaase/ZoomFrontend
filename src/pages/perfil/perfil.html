@@ -46,7 +46,7 @@
             <ion-row style="width:100%;height: 15%;background-color:rgb(245, 245, 245)">
                     <p style="font-weight: bold;color: rgb(15, 116, 231);margin-left: 3% !important;margin:1%">Teléfono</p>
                 </ion-row>
-                <ion-row style="width:100%;height:100%">
+                <ion-row style="width:100%;height:78%">
                         <ion-col col-12>
                                 <ion-input class="input2" [readonly]="!canWrite" [(ngModel)]="telefono"></ion-input>
                                <ion-row style="width:90%;margin-top:4%;margin-left: 5%;border-style: solid;border-color:rgb(236, 236, 236);border-width: 0.5px">
@@ -54,7 +54,10 @@
                                         <ion-label>Quiero recibir promociones vía SMS</ion-label>
                                    </ion-col>
                                    <ion-col col-2 style="align-self: center">
-                                        <ion-toggle [(ngModel)]="recuerdame"></ion-toggle>
+                                       
+                                            <ion-toggle class="height:auto"></ion-toggle>
+                                      
+                                        
                                    </ion-col>
                                     
                                </ion-row>
@@ -70,7 +73,7 @@
             <p style="font-weight: bold;color: rgb(15, 116, 231);margin-left: 3% !important;margin:1%">Método de pago</p>
         </ion-row>
         <ion-row style="width:100%;height:100%">
-            <ion-col col-6>
+            <ion-col col-6 style="margin-left: 2%;">
                     <ion-input class="input2" style="width:96% !important"[readonly]="!canWrite" [(ngModel)]="creditCard"></ion-input>
             </ion-col>
             <ion-col col-1 style="text-align:center;margin-top:3%;">

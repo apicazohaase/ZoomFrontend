@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ApiClientService {
-    private domain = 'http://173.193.92.58:31090';
+    private domain = 'http://159.122.183.51:31090';
 
     constructor(private http: HttpClient, @Optional() @Inject('domain') domain: string){
         if(domain){

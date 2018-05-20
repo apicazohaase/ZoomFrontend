@@ -9,7 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { VendedorPage } from '../vendedor/vendedor';
 import { TransportistaPage } from '../transportista/transportista';
 import { EmptyPage } from '../empty/empty';
-
+import { LoginLoaderPage } from '../login-loader/login-loader';
+import { LoginLoaderClientPage } from '../login-loader-client/login-loader-client';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -36,7 +38,7 @@ export class LoginPage {
   public client:string="resource:zoom.app.Client#";
   public transport:string="resource:zoom.app.Transport#1";
   public user:string;
-  constructor(public events:Events,public loadingCtrl: LoadingController,public api:ApiClientService, public formBuilder:FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events:Events,private storage:Storage, public loadingCtrl: LoadingController,public api:ApiClientService, public formBuilder:FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
     this.myForm = this.createMyForm();
     this.typeuser="";
     this.showme1 = false;
@@ -108,60 +110,64 @@ tryLogin(){
 
 login(){
 this.saveData();
-let loading = this.loadingCtrl.create({
-  content: 'Logging in...'
-});
-loading.present();
-  this.api.getAllClients().subscribe(
+
+
+this.api.getAllClients().subscribe(
     result=>{
+      console.log(result);
       for(var i=0;i<result.body.length;i++){
         if(result.body[i].name==this.nombre){
           this.id = result.body[i].id;
           if(this.typeuser=="Cliente"){
             this.user = this.client + this.id;
           }
-          //this.user = this.client + this.id;
-          let log = {
+        }
+        let log = {
             
                 "$class": "zoom.app.Login",
                 "defaultUser": this.user,
                 "name": this.nombre,
                 "password": this.password
               };
-             /* let loading = this.loadingCtrl.create({
-                content: 'Logging in...'
-              });
-              loading.present();*/
-            
+
+              this.storage.set('user', log);
+             
               this.api.login(log).subscribe(
                 result => {
                   this.events.publish('userInfo',result);
                   console.log(result);
                   this.error=false;
                   if(this.typeuser=="Cliente"){
-                    this.navCtrl.setRoot(HomePage,log);
+                    //this.navCtrl.setRoot(HomePage,log);
+                    
+                    this.navCtrl.setRoot(LoginLoaderClientPage,log);
+                    
                   }else if(this.typeuser=="Transportista"){
-                    this.navCtrl.setRoot(TransportistaPage);
+                    
+                    this.navCtrl.setRoot(LoginLoaderPage,this.typeuser);
+                    
                   }else if(this.typeuser=="Vendedor"){
-                    this.navCtrl.setRoot(VendedorPage);
+                    
+                    this.navCtrl.setRoot(LoginLoaderPage,this.typeuser);
+                   
                   }
-                  loading.dismiss();
+                  
                 },
                 error=>{
                   this.error=true;
                   console.log(error);
-                  loading.dismiss();
+                  
                 }
               )
               
         }
         //this.user = this.client + this.id;
         
-      }
+      
     },
     error=>{
       console.log(error);
-      loading.dismiss();
+      //loading.dismiss();
     });
 }
 

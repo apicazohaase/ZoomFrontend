@@ -2,7 +2,7 @@
 
     <ion-navbar>
       <ion-title class="header">
-        <p style="color:white">Recomendados</p>
+        <p style="color:white">Populares</p>
       </ion-title>
     </ion-navbar>
   </ion-header>
@@ -18,11 +18,19 @@
       </ion-row>
     </ion-row>
     <ion-row class="rowImg">
-      <ion-col col-4></ion-col>
-      <ion-col col-4>
-          <img src="assets/imgs/auriculares.png">
-      </ion-col>
-      <ion-col col-4></ion-col>
+        <ion-col col-1></ion-col>
+        <ion-col col-10 style="width:100%;height: 100%">
+          <ion-slides autoplay="3000" loop="true" speed="800" pager="true">
+            <ion-slide class="slide">
+              <img src="assets/imgs/auriculares.png" style="max-width: 60%">
+            </ion-slide>
+            <ion-slide class="slide">
+              <img src="assets/imgs/g430_2.png" style="max-width: 86%;">
+            </ion-slide>
+          </ion-slides>
+  
+        </ion-col>
+        <ion-col col-1></ion-col>
      </ion-row>
      <ion-row style="width:100%;height:30%">
       <ion-row  style="width:100%;height:80%">

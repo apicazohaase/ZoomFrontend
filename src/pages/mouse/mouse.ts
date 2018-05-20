@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Events, ModalController } from 'ionic-angular';
 import { ApiClientService } from '../../cliente';
 import { AnonymousSubject } from 'rxjs/Subject';
+import { ModalPage } from '../modal/modal';
 
 
 @IonicPage()
@@ -20,7 +21,7 @@ export class MousePage {
   public direccion:any;
   public idPersona:any;
 
-  constructor(public alertCtrl:AlertController, public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
+  constructor(public alertCtrl:AlertController, public modalCtrl: ModalController,public api:ApiClientService, public navCtrl: NavController, public navParams: NavParams, public events:Events) {
     this.idPersona = this.navParams.data;
     this.id='1';
     this.api.getAProduct(this.id).subscribe(
@@ -53,8 +54,12 @@ export class MousePage {
 
   }
 
+  openModal(pageName) {
+    this.modalCtrl.create(pageName, {id:this.id}, { cssClass: 'inset-modal' }).present();
+  }
+
   comprarProducto(){
-    this.presentAlert();
+    this.openModal(ModalPage);
   }
 
   comprar(){
