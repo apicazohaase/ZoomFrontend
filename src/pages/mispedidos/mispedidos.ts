@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApiClientService } from '../../cliente';
 import { Storage } from '@ionic/storage';
+import { TrackingPage } from '../tracking/tracking';
 
 
 @IonicPage()
@@ -53,6 +54,10 @@ export class MispedidosPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MispedidosPage');
+  }
+
+  trackingPage(pedido){
+    this.navCtrl.push(TrackingPage,pedido);
   }
 
 }

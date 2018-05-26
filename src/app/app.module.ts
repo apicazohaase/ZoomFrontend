@@ -50,6 +50,8 @@ import { TimerProgress } from '../components/timer-progress/timer-progress';
 import { EmptyPageModule } from '../pages/empty/empty.module';
 import { ModalPage } from '../pages/modal/modal';
 import { ModalPageModule } from '../pages/modal/modal.module';
+import { TrackingPage } from '../pages/tracking/tracking';
+import { TrackingPageModule } from '../pages/tracking/tracking.module';
 
 
 @NgModule({
@@ -76,6 +78,7 @@ import { ModalPageModule } from '../pages/modal/modal.module';
     KeyboardPageModule,
     MispedidosPageModule,
     ModalPageModule,
+    TrackingPageModule,
     AuricularesPageModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
@@ -88,6 +91,7 @@ import { ModalPageModule } from '../pages/modal/modal.module';
     EmptyPage,
     ModalPage,
     LoginPage,
+    TrackingPage,
     MousePage,
     KeyboardPage,
     TransportistaPage,
